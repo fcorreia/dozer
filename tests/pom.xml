@@ -24,7 +24,7 @@
     <parent>
         <groupId>com.github.dozermapper</groupId>
         <artifactId>dozer-plugins-parent</artifactId>
-        <version>6.5.3-SNAPSHOT</version>
+        <version>7.0.0-SNAPSHOT</version>
         <relativePath>../plugins-parent</relativePath>
     </parent>
 
@@ -33,6 +33,13 @@
     <packaging>pom</packaging>
     <name>Dozer :: Tests</name>
 
+    <properties>
+        <arquillian-bom.version>1.4.0.Final</arquillian-bom.version>
+        <wildfly-arquillian-container-embedded.version>2.1.0.Final</wildfly-arquillian-container-embedded.version>
+        <shrinkwrap.version>2.2.6</shrinkwrap.version>
+        <wildfly-dist.version>10.1.0.Final</wildfly-dist.version>
+    </properties>
+
     <modules>
         <module>dozer-osgi-tests-model</module>
         <module>dozer-osgi-tests</module>
@@ -40,4 +47,45 @@
         <module>dozer-jmh-tests</module>
     </modules>
 
+    <dependencyManagement>
+        <dependencies>
+
+            <dependency>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>org.apache.felix.utils</artifactId>
+                <version>1.11.2</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.wildfly.arquillian</groupId>
+                <artifactId>wildfly-arquillian-container-embedded</artifactId>
+                <version>${wildfly-arquillian-container-embedded.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.shrinkwrap.resolver</groupId>
+                <artifactId>shrinkwrap-resolver-depchain</artifactId>
+                <version>${shrinkwrap.version}</version>
+                <scope>test</scope>
+                <type>pom</type>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.xnio</groupId>
+                <artifactId>xnio-api</artifactId>
+                <version>3.5.1.Final</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.logmanager</groupId>
+                <artifactId>jboss-logmanager</artifactId>
+                <version>2.0.7.Final</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wildfly.clientr</groupId>
+                <artifactId>wildfly-client-config</artifactId>
+                <version>1.0.0.Final</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>

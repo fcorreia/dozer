@@ -22,7 +22,7 @@
     <parent>
         <artifactId>dozer-integrations</artifactId>
         <groupId>com.github.dozermapper</groupId>
-        <version>6.5.3-SNAPSHOT</version>
+        <version>7.0.0-SNAPSHOT</version>
         <relativePath>../</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -37,14 +37,13 @@
         <module>dozer-spring-boot-starter</module>
     </modules>
 
-    <dependencyManagement>
+    <!--dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>com.github.dozermapper</groupId>
                 <artifactId>dozer-core</artifactId>
-                <version>${project.version}</version>
             </dependency>
         </dependencies>
-    </dependencyManagement>
+    </dependencyManagement-->
 
 </project>

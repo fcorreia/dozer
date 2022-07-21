@@ -24,8 +24,8 @@
     <parent>
         <groupId>com.github.dozermapper</groupId>
         <artifactId>dozer-parent</artifactId>
-        <version>6.5.3-SNAPSHOT</version>
-        <relativePath>../</relativePath>
+        <version>7.0.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>dozer-plugins-parent</artifactId>
@@ -93,7 +93,7 @@
             <dependency>
                 <groupId>com.github.dozermapper</groupId>
                 <artifactId>dozer-bom-dependencies</artifactId>
-                <version>${building-tools.version}</version>
+                <version>7.0.0-SNAPSHOT</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
