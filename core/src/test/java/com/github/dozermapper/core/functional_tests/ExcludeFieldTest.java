@@ -22,11 +22,11 @@ import com.github.dozermapper.core.vo.excluded.TwoB;
 import com.github.dozermapper.core.vo.excluded.ZeroA;
 import com.github.dozermapper.core.vo.excluded.ZeroB;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class ExcludeFieldTest extends AbstractFunctionalTest {
 

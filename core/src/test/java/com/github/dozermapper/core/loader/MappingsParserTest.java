@@ -26,12 +26,12 @@ import com.github.dozermapper.core.loader.xml.XMLParser;
 import com.github.dozermapper.core.loader.xml.XMLParserFactory;
 import com.github.dozermapper.core.propertydescriptor.PropertyDescriptorFactory;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class MappingsParserTest extends AbstractDozerTest {
 

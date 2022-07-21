@@ -23,10 +23,10 @@ import com.github.dozermapper.core.vo.mapperaware.MapperAwareSimpleDest;
 import com.github.dozermapper.core.vo.mapperaware.MapperAwareSimpleInternal;
 import com.github.dozermapper.core.vo.mapperaware.MapperAwareSimpleSrc;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
  * Fixes issue 45

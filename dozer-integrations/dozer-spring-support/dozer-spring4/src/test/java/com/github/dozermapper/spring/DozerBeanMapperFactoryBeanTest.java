@@ -27,8 +27,8 @@ import com.github.dozermapper.core.Mapper;
 import com.github.dozermapper.core.MapperModelContext;
 import com.github.dozermapper.core.events.EventListener;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.io.Resource;
 

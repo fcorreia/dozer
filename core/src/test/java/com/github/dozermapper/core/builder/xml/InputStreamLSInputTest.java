@@ -19,9 +19,9 @@ import java.io.StringReader;
 
 import org.w3c.dom.ls.LSInput;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class InputStreamLSInputTest {
 

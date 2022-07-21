@@ -29,11 +29,9 @@ import com.github.dozermapper.core.vo.abstractinheritance.AbstractBCollectionCon
 import com.github.dozermapper.core.vo.abstractinheritance.AbstractBContainer;
 import com.github.dozermapper.core.vo.abstractinheritance.B;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit tests for data objects that have Abstract Class(s) in their object hierarchy
@@ -57,7 +55,7 @@ public class InheritanceAbstractClassMappingTest extends AbstractFunctionalTest 
         A mappedSrc = mapper.map(dest, A.class);
         B mappedDest = mapper.map(mappedSrc, B.class);
 
-        assertEquals("objects not mapped correctly bi-directional", dest, mappedDest);
+        assertEquals(dest, mappedDest, "objects not mapped correctly bi-directional");
     }
 
     @Test
@@ -78,12 +76,12 @@ public class InheritanceAbstractClassMappingTest extends AbstractFunctionalTest 
         A mappedSrc = mapper.map(dest, A.class);
         B mappedDest = mapper.map(mappedSrc, B.class);
 
-        assertEquals("objects not mapped correctly bi-directional", dest, mappedDest);
+        assertEquals(dest, mappedDest, "objects not mapped correctly bi-directional");
     }
 
-    @Test(expected = MappingException.class)
+    @Test
     public void testAbstractDestClassThrowsException() {
-        mapper.map(newInstance(A.class), AbstractB.class);
+        assertThrows(MappingException.class, () -> mapper.map(newInstance(A.class), AbstractB.class));
     }
 
     @Test
@@ -96,14 +94,14 @@ public class InheritanceAbstractClassMappingTest extends AbstractFunctionalTest 
 
         assertNull("abstractField1 should have been excluded", dest.getAbstractField1());
         assertEquals("abstractBField not mapped correctly", src.getAbstractAField(), dest.getAbstractBField());
-        assertEquals("field1 not mapped correctly", src.getField1(), ((B)dest).getField1());
-        assertEquals("fieldB not mapped correctly", src.getFieldA(), ((B)dest).getFieldB());
+        assertEquals("field1 not mapped correctly", src.getField1(), ((B) dest).getField1());
+        assertEquals("fieldB not mapped correctly", src.getFieldA(), ((B) dest).getFieldB());
 
         // Remap to each other to test bi-directional mapping
         AbstractA mappedSrc = mapper.map(dest, AbstractA.class);
         AbstractB mappedDest = mapper.map(mappedSrc, AbstractB.class);
 
-        assertEquals("objects not mapped correctly bi-directional", dest, mappedDest);
+        assertEquals(dest, mappedDest, "objects not mapped correctly bi-directional");
     }
 
     @Test
@@ -115,14 +113,14 @@ public class InheritanceAbstractClassMappingTest extends AbstractFunctionalTest 
 
         assertNull("abstractField1 should have been excluded", dest.getB().getAbstractField1());
         assertEquals("abstractBField not mapped correctly", src.getA().getAbstractAField(), dest.getB().getAbstractBField());
-        assertEquals("field1 not mapped correctly", ((A)src.getA()).getField1(), ((B)dest.getB()).getField1());
-        assertEquals("fieldB not mapped correctly", ((A)src.getA()).getFieldA(), ((B)dest.getB()).getFieldB());
+        assertEquals("field1 not mapped correctly", ((A) src.getA()).getField1(), ((B) dest.getB()).getField1());
+        assertEquals("fieldB not mapped correctly", ((A) src.getA()).getFieldA(), ((B) dest.getB()).getFieldB());
 
         // Remap to each other to test bi-directional mapping
         AbstractAContainer mappedSrc = mapper.map(dest, AbstractAContainer.class);
         AbstractBContainer mappedDest = mapper.map(mappedSrc, AbstractBContainer.class);
 
-        assertEquals("objects not mapped correctly bi-directional", dest, mappedDest);
+        assertEquals(dest, mappedDest, "objects not mapped correctly bi-directional");
     }
 
     @Test
@@ -134,14 +132,14 @@ public class InheritanceAbstractClassMappingTest extends AbstractFunctionalTest 
 
         assertNull("abstractField1 should have been excluded", dest.getBs().get(0).getAbstractField1());
         assertEquals("abstractBField not mapped correctly", src.getAs().get(0).getAbstractAField(), dest.getBs().get(0).getAbstractBField());
-        assertEquals("field1 not mapped correctly", ((A)src.getAs().get(0)).getField1(), ((B)dest.getBs().get(0)).getField1());
-        assertEquals("fieldB not mapped correctly", ((A)src.getAs().get(0)).getFieldA(), ((B)dest.getBs().get(0)).getFieldB());
+        assertEquals("field1 not mapped correctly", ((A) src.getAs().get(0)).getField1(), ((B) dest.getBs().get(0)).getField1());
+        assertEquals("fieldB not mapped correctly", ((A) src.getAs().get(0)).getFieldA(), ((B) dest.getBs().get(0)).getFieldB());
 
         // Remap to each other to test bi-directional mapping
         AbstractACollectionContainer mappedSrc = mapper.map(dest, AbstractACollectionContainer.class);
         AbstractBCollectionContainer mappedDest = mapper.map(mappedSrc, AbstractBCollectionContainer.class);
 
-        assertEquals("objects not mapped correctly bi-directional", dest, mappedDest);
+        assertEquals(dest, mappedDest, "objects not mapped correctly bi-directional");
     }
 
     @Test
@@ -160,7 +158,7 @@ public class InheritanceAbstractClassMappingTest extends AbstractFunctionalTest 
         A mappedSrc = mapper.map(dest, A.class);
         B mappedDest = mapper.map(mappedSrc, B.class);
 
-        assertEquals("objects not mapped correctly bi-directional", dest, mappedDest);
+        assertEquals(dest, mappedDest, "objects not mapped correctly bi-directional");
     }
 
     @Test
@@ -181,7 +179,7 @@ public class InheritanceAbstractClassMappingTest extends AbstractFunctionalTest 
         A mappedSrc = mapper.map(dest, A.class);
         B mappedDest = mapper.map(mappedSrc, B.class);
 
-        assertEquals("objects not mapped correctly bi-directional", dest, mappedDest);
+        assertEquals(dest, mappedDest, "objects not mapped correctly bi-directional");
     }
 
     private A getA() {

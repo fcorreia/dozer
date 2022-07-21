@@ -20,7 +20,7 @@ import com.github.dozermapper.core.Mapper;
 import com.github.dozermapper.core.MappingException;
 import com.github.dozermapper.core.loader.api.BeanMappingBuilder;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class ExceptionHandlingFunctionalTest extends AbstractFunctionalTest {
 

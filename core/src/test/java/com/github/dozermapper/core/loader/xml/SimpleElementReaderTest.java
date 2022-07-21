@@ -15,16 +15,14 @@
  */
 package com.github.dozermapper.core.loader.xml;
 
+import com.github.dozermapper.core.AbstractDozerTest;
+import com.github.dozermapper.core.el.NoopELEngine;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
-import com.github.dozermapper.core.AbstractDozerTest;
-import com.github.dozermapper.core.el.NoopELEngine;
-
-import org.junit.Before;
-import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -33,7 +31,7 @@ public class SimpleElementReaderTest extends AbstractDozerTest {
     private SimpleElementReader reader;
 
     @Override
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         super.setUp();
         reader = new ExpressionElementReader(new NoopELEngine());

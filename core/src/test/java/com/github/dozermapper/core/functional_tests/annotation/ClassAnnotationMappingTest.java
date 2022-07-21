@@ -20,18 +20,18 @@ import com.github.dozermapper.core.OptionValue;
 import com.github.dozermapper.core.functional_tests.AbstractFunctionalTest;
 import com.github.dozermapper.core.util.MappingOptions;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ClassAnnotationMappingTest extends AbstractFunctionalTest {
 
     private User source;
     private UserDto destination;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         super.setUp();
         source = new User();

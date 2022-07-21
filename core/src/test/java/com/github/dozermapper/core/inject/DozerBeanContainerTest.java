@@ -15,30 +15,29 @@
  */
 package com.github.dozermapper.core.inject;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 
-import org.junit.Before;
-import org.junit.Test;
-
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.hamcrest.CoreMatchers.sameInstance;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class DozerBeanContainerTest {
 
     DozerBeanContainer container;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         container = new DozerBeanContainer();
     }
 
-    @Test(expected = IllegalStateException.class)
+    @Test
     public void notRegistered() {
-        container.getBean(String.class);
+        assertThrows(IllegalStateException.class, () -> container.getBean(String.class));
     }
 
     @Test
@@ -56,11 +55,13 @@ public class DozerBeanContainerTest {
         assertThat(beans.size(), equalTo(2));
     }
 
-    @Test(expected = IllegalStateException.class)
+    @Test
     public void moreThanOne() {
-        container.register(HashSet.class);
-        container.register(ArrayList.class);
-        container.getBean(Collection.class);
+        assertThrows(IllegalStateException.class, () -> {
+            container.register(HashSet.class);
+            container.register(ArrayList.class);
+            container.getBean(Collection.class);
+        });
     }
 
     @Test

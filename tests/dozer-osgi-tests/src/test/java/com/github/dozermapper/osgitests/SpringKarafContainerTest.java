@@ -17,7 +17,7 @@ package com.github.dozermapper.osgitests;
 
 import com.github.dozermapper.osgitests.support.BundleOptions;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.ops4j.pax.exam.Configuration;
 import org.ops4j.pax.exam.Option;

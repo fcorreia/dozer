@@ -19,7 +19,7 @@ import java.text.DateFormat;
 
 import com.github.dozermapper.core.AbstractDozerTest;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class ConverterTest extends AbstractDozerTest {
 

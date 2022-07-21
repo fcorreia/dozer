@@ -18,12 +18,16 @@ package com.github.dozermapper.core.functional_tests.annotation;
 import com.github.dozermapper.core.Mapping;
 import com.github.dozermapper.core.functional_tests.AbstractFunctionalTest;
 
-import org.junit.Before;
-import org.junit.Test;
+
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.nullValue;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 
 public class AnnotationMappingTest extends AbstractFunctionalTest {
 
@@ -31,7 +35,7 @@ public class AnnotationMappingTest extends AbstractFunctionalTest {
     private SubUser subSource;
     private UserDto destination;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         super.setUp();
         source = new User();
@@ -51,7 +55,7 @@ public class AnnotationMappingTest extends AbstractFunctionalTest {
 
     @Test
     public void shouldMapProperties_Backwards() {
-        source.setAge(new Short("1"));
+        source.setAge(Short.valueOf("1"));
 
         UserDto result = mapper.map(source, UserDto.class);
 
@@ -118,13 +122,15 @@ public class AnnotationMappingTest extends AbstractFunctionalTest {
         assertThat(result.zip, equalTo("12345"));
     }
 
-    @Test(expected = NoSuchFieldException.class)
+    @Test
     public void shouldMapFields_Optional() throws NoSuchFieldException {
-        source.setPassword("some value");
+        assertThrows(NoSuchFieldException.class, () -> {
+            source.setPassword("some value");
 
-        UserDto result = mapper.map(source, UserDto.class);
+            UserDto result = mapper.map(source, UserDto.class);
 
-        result.getClass().getField("password");
+            result.getClass().getField("password");
+        });
     }
 
     @Test

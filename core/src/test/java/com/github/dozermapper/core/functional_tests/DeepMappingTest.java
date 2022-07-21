@@ -28,12 +28,12 @@ import com.github.dozermapper.core.vo.deep.SrcDeepObj;
 import com.github.dozermapper.core.vo.deep2.Dest;
 import com.github.dozermapper.core.vo.deep2.Src;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class DeepMappingTest extends AbstractFunctionalTest {
 
@@ -94,7 +94,7 @@ public class DeepMappingTest extends AbstractFunctionalTest {
 
         assertNotNull(dest.getDestField().getNestedDestField().getNestedNestedDestField());
         assertEquals(src.getSrcField(), dest.getDestField().getNestedDestField().getNestedNestedDestField());
-        assertTrue("should have been set by customer setter method", dest.getDestField().getNestedDestField().isSetWithCustomMethod());
+        assertTrue(dest.getDestField().getNestedDestField().isSetWithCustomMethod(), "should have been set by customer setter method");
 
         Src dest2 = mapper.map(dest, Src.class);
 

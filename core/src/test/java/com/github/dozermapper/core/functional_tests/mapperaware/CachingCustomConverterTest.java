@@ -23,8 +23,8 @@ import com.github.dozermapper.core.DozerConverter;
 import com.github.dozermapper.core.Mapper;
 import com.github.dozermapper.core.MapperAware;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;

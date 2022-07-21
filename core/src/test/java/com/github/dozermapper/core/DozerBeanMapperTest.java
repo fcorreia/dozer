@@ -15,27 +15,22 @@
  */
 package com.github.dozermapper.core;
 
+import com.github.dozermapper.core.events.EventListener;
+import com.github.dozermapper.core.vo.TestObject;
+import com.github.dozermapper.core.vo.generics.deepindex.TestObjectPrime;
+import org.apache.commons.beanutils.PropertyUtils;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 
-import com.github.dozermapper.core.events.EventListener;
-import com.github.dozermapper.core.vo.TestObject;
-import com.github.dozermapper.core.vo.generics.deepindex.TestObjectPrime;
-
-import org.apache.commons.beanutils.PropertyUtils;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyNoMoreInteractions;
+import static org.mockito.Mockito.*;
 
 public class DozerBeanMapperTest {
 
@@ -43,7 +38,7 @@ public class DozerBeanMapperTest {
     private static final int THREAD_COUNT = 10;
     private List<Throwable> exceptions;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         // todo the test should be redesigned once DozerBeanMapper is immutable #434
         mapper = DozerBeanMapperBuilder.buildDefault();
@@ -55,7 +50,7 @@ public class DozerBeanMapperTest {
         });
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
         for (Throwable t : exceptions) {
             t.printStackTrace();

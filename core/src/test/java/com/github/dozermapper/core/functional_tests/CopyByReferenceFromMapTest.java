@@ -15,19 +15,19 @@
  */
 package com.github.dozermapper.core.functional_tests;
 
+import com.github.dozermapper.core.vo.ValueObject;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import java.util.HashMap;
 
-import com.github.dozermapper.core.vo.ValueObject;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import org.junit.Before;
-import org.junit.Test;
-
-import static org.junit.Assert.assertNotNull;
 
 public class CopyByReferenceFromMapTest extends AbstractFunctionalTest {
 
     @Override
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         mapper = getMapper("mappings/mapMapping7.xml");
     }

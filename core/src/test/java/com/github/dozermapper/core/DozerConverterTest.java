@@ -15,23 +15,23 @@
  */
 package com.github.dozermapper.core;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import java.math.BigDecimal;
 
-import org.junit.Before;
-import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class DozerConverterTest extends AbstractDozerTest {
 
     private DozerConverter<String, Integer> converter;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         super.setUp();
         converter = new DozerConverter<String, Integer>(String.class,
-                                                        Integer.class) {
+                Integer.class) {
 
             public Integer convertTo(String source, Integer destination) {
                 return Integer.parseInt(source);
@@ -43,17 +43,16 @@ public class DozerConverterTest extends AbstractDozerTest {
         };
     }
 
-    @Test(expected = IllegalStateException.class)
+    @Test
     public void test_parameterNotSet() {
-        converter.getParameter();
-        fail();
+        assertThrows(IllegalStateException.class, () -> converter.getParameter());
     }
 
-    @Test(expected = MappingException.class)
+    @Test
     public void test_convert_exception() {
-        converter.convert(Boolean.TRUE, new BigDecimal(1), Boolean.class,
-                          BigDecimal.class);
-        fail();
+        assertThrows(MappingException.class, () ->
+                converter.convert(Boolean.TRUE, new BigDecimal(1), Boolean.class,
+                        BigDecimal.class));
     }
 
     @Test
@@ -64,27 +63,27 @@ public class DozerConverterTest extends AbstractDozerTest {
 
     @Test
     public void test_convertFromTo() {
-        assertEquals("1", converter.convertFrom(new Integer(1)));
-        assertEquals(new Integer(2), converter.convertTo("2"));
+        assertEquals("1", converter.convertFrom(Integer.valueOf(1)));
+        assertEquals(Integer.valueOf(2), converter.convertTo("2"));
 
-        assertEquals("1", converter.convertFrom(new Integer(1), "0"));
-        assertEquals(new Integer(2), converter.convertTo("2", new Integer(0)));
+        assertEquals("1", converter.convertFrom(Integer.valueOf(1), "0"));
+        assertEquals(Integer.valueOf(2), converter.convertTo("2", Integer.valueOf(0)));
     }
 
     @Test
     public void test_FullCycle() {
         assertEquals(1, converter.convert(null, "1", Integer.class,
-                                          String.class));
-        assertEquals("1", converter.convert(null, new Integer(1), String.class,
-                                            Integer.class));
+                String.class));
+        assertEquals("1", converter.convert(null, Integer.valueOf(1), String.class,
+                Integer.class));
     }
 
     @Test
     public void testObjectType() {
         assertEquals(1, converter
                 .convert(null, "1", Object.class, String.class));
-        assertEquals("1", converter.convert(null, new Integer(1), Object.class,
-                                            Integer.class));
+        assertEquals("1", converter.convert(null, Integer.valueOf(1), Object.class,
+                Integer.class));
     }
 
     @Test
@@ -99,12 +98,12 @@ public class DozerConverterTest extends AbstractDozerTest {
 
             @Override
             public Double convertTo(Integer source, Double destination) {
-                return new Double(Integer.toString(source));
+                return Double.valueOf(Integer.toString(source));
             }
 
             @Override
             public Integer convertFrom(Double source, Integer destination) {
-                return new Integer(Double.toString(source));
+                return Integer.valueOf(Double.toString(source));
             }
         };
 
@@ -125,11 +124,11 @@ public class DozerConverterTest extends AbstractDozerTest {
             }
         };
 
-        assertEquals(new Integer(1), converter.convert(null, new Integer(1),
-                                                       Number.class, Integer.class));
+        assertEquals(Integer.valueOf(1), converter.convert(null, Integer.valueOf(1),
+                Number.class, Integer.class));
 
-        assertEquals(new Integer(1), converter.convert(null, new Double(1),
-                                                       Integer.class, Number.class));
+        assertEquals(Integer.valueOf(1), converter.convert(null, Double.valueOf(1),
+                Integer.class, Number.class));
     }
 
     @Test
@@ -147,10 +146,10 @@ public class DozerConverterTest extends AbstractDozerTest {
                 return source;
             }
         };
-        assertEquals(new Integer(1), converter.convert(null, new Integer(1),
-                                                       Long.class, Integer.class));
-        assertEquals(new Integer(11), converter.convert(null, new Integer(11),
-                                                        Object.class, Integer.class));
+        assertEquals(Integer.valueOf(1), converter.convert(null, Integer.valueOf(1),
+                Long.class, Integer.class));
+        assertEquals(Integer.valueOf(11), converter.convert(null, Integer.valueOf(11),
+                Object.class, Integer.class));
     }
 
     @Test
@@ -170,10 +169,10 @@ public class DozerConverterTest extends AbstractDozerTest {
 
         };
 
-        assertEquals(new Long(1L), converter.convert(null, new String("1"),
-                                                     Long.class, Object.class));
-        assertEquals(new String("1"), converter.convert(null, new Integer(1),
-                                                        Object.class, Integer.class));
+        assertEquals(Long.valueOf(1L), converter.convert(null, new String("1"),
+                Long.class, Object.class));
+        assertEquals(new String("1"), converter.convert(null, Integer.valueOf(1),
+                Object.class, Integer.class));
     }
 
 }

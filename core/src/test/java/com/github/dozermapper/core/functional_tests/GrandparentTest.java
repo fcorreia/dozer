@@ -18,16 +18,17 @@ package com.github.dozermapper.core.functional_tests;
 import com.github.dozermapper.core.vo.excluded.TwoA;
 import com.github.dozermapper.core.vo.excluded.TwoB;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 
 public class GrandparentTest extends AbstractFunctionalTest {
 
     @Override
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         mapper = getMapper("mappings/grandparent.xml");
     }

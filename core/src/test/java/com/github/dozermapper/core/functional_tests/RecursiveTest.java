@@ -20,11 +20,11 @@ import com.github.dozermapper.core.vo.recursive.ClassAAPrime;
 import com.github.dozermapper.core.vo.recursive.ClassB;
 import com.github.dozermapper.core.vo.recursive.ClassBPrime;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Test the dozer behaviour when confronted with structures similar to ours. As of now (dozer 3.0) the behaviour is not

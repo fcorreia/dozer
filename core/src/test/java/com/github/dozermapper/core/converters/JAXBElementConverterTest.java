@@ -30,11 +30,11 @@ import com.github.dozermapper.core.config.BeanContainer;
 import com.github.dozermapper.core.vo.jaxb.employee.EmployeeType;
 import com.github.dozermapper.core.vo.jaxb.employee.EmployeeWithInnerClass;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class JAXBElementConverterTest extends AbstractDozerTest {
 

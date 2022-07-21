@@ -26,11 +26,11 @@ import com.github.dozermapper.core.builder.model.jaxb.MappingsDefinition;
 import com.github.dozermapper.core.config.BeanContainer;
 
 import org.apache.commons.io.IOUtils;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class DefaultJAXBModelParserTest {
 

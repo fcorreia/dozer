@@ -26,10 +26,10 @@ import com.github.dozermapper.core.vo.cumulative.BookPrime;
 import com.github.dozermapper.core.vo.cumulative.Library;
 import com.github.dozermapper.core.vo.cumulative.LibraryPrime;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CumulativeMappingTest extends AbstractFunctionalTest {
 

@@ -191,6 +191,8 @@
                                         <!-- Exclude junit4 -->
                                         <!--exclude>junit:junit</exclude-->
                                         <exclude>javax.validation:validation-api</exclude>
+                                        <exclude>com.sun.xml.bind:jaxb-impl</exclude>
+                                        <exclude>com.sun.xml.bind:jaxb-core</exclude>
                                     </excludes>
                                 </bannedDependencies>
                             </rules>

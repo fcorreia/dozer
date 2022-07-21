@@ -26,7 +26,7 @@ import com.github.dozermapper.protobuf.vo.protomultiple.ContainerObject.Containe
 import com.github.dozermapper.protobuf.vo.protomultiple.SimpleProtoTestObject;
 
 import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

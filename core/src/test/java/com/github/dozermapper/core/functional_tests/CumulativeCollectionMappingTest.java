@@ -22,10 +22,10 @@ import com.github.dozermapper.core.vo.collections.UserGroupImpl;
 import com.github.dozermapper.core.vo.collections.UserGroupPrime;
 import com.github.dozermapper.core.vo.collections.UserImpl;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class CumulativeCollectionMappingTest extends AbstractFunctionalTest {
 

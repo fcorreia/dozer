@@ -16,14 +16,11 @@
 package com.github.dozermapper.core.functional_tests;
 
 import com.github.dozermapper.core.Mapping;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Before;
-import org.junit.Test;
-
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.nullValue;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
  * Tests for situations when the entire class has been declared as accessible
@@ -33,7 +30,7 @@ public class ClassLevelIsAccessibleTest extends AbstractFunctionalTest {
     private final String FIELD_VALUE = "someValue";
 
     @Override
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         mapper = getMapper("mappings/classLevelIsAccessible.xml");
     }

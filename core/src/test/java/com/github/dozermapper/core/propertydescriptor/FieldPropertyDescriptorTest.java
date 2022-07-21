@@ -24,21 +24,21 @@ import com.github.dozermapper.core.config.BeanContainer;
 import com.github.dozermapper.core.factory.DestBeanCreator;
 import com.github.dozermapper.core.fieldmap.FieldMap;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 
 public class FieldPropertyDescriptorTest extends AbstractDozerTest {
 
     private DestBeanCreator destBeanCreator = new DestBeanCreator(new BeanContainer());
 
-    @Test(expected = MappingException.class)
+    @Test
     public void testNoSuchField() {
-        new FieldPropertyDescriptor(String.class, "nosuchfield", false, 0, null, null, destBeanCreator);
-        fail();
+        assertThrows(MappingException.class, () ->
+                new FieldPropertyDescriptor(String.class, "nosuchfield", false, 0, null, null, destBeanCreator)
+        );
+
     }
 
     @Test

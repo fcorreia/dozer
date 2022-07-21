@@ -24,7 +24,7 @@ import com.github.dozermapper.core.metadata.ClassMappingMetadata;
 import com.github.dozermapper.spring.DozerBeanMapperFactoryBean;
 import com.github.dozermapper.springboot.autoconfigure.DozerAutoConfiguration;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;

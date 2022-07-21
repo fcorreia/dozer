@@ -21,18 +21,16 @@ import com.github.dozermapper.core.vo.direction.ContentItemGroup;
 import com.github.dozermapper.core.vo.direction.ContentItemGroupDTO;
 import com.github.dozermapper.core.vo.direction.ContentItemGroupDefault;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 public class InheritanceDirectionTest extends AbstractFunctionalTest {
 
     @Override
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         mapper = getMapper("mappings/inheritanceDirection.xml");
     }

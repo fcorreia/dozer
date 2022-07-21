@@ -20,10 +20,10 @@ import com.github.dozermapper.core.vo.oneway.DestClass;
 import com.github.dozermapper.core.vo.oneway.Holder;
 import com.github.dozermapper.core.vo.oneway.SourceClass;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class OneWayMappingTest extends AbstractFunctionalTest {
 

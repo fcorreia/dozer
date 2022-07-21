@@ -27,7 +27,7 @@ import com.github.dozermapper.core.functional_tests.support.TestDataFactory;
 import com.github.dozermapper.core.loader.xml.ExpressionElementReader;
 import com.github.dozermapper.core.util.DozerConstants;
 
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
 
 /**

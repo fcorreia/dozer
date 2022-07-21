@@ -15,28 +15,20 @@
  */
 package com.github.dozermapper.core;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import java.util.HashSet;
 import java.util.Set;
 
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class MappedFieldsTrackerTest extends AbstractDozerTest {
 
-    @Rule
-    public final ExpectedException exception = ExpectedException.none();
 
     private MappedFieldsTracker tracker;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         tracker = new MappedFieldsTracker();
     }
@@ -222,16 +214,14 @@ public class MappedFieldsTrackerTest extends AbstractDozerTest {
 
     @Test
     public void testTransaction_unknownCommit() {
-        exception.expect(IllegalStateException.class);
-        exception.expectMessage("No transaction with ID 0");
-        tracker.commitTransaction(0);
+        Exception e = assertThrows(IllegalStateException.class, () -> tracker.commitTransaction(0));
+        assertEquals("No transaction with ID 0", e.getMessage());
     }
 
     @Test
     public void testTransaction_unknownRollback() {
-        exception.expect(IllegalStateException.class);
-        exception.expectMessage("No transaction with ID 0");
-        tracker.rollbackTransaction(0);
+        Exception e = assertThrows(IllegalStateException.class, () -> tracker.rollbackTransaction(0));
+        assertEquals("No transaction with ID 0", e.getMessage());
     }
 
 }

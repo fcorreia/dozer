@@ -20,10 +20,10 @@ import org.xml.sax.InputSource;
 import com.github.dozermapper.core.AbstractDozerTest;
 import com.github.dozermapper.core.config.BeanContainer;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class DozerResolverTest extends AbstractDozerTest {
 

@@ -16,14 +16,13 @@
 package com.github.dozermapper.core;
 
 import org.hamcrest.Matchers;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class Version5XSDTest {
 
-    @Rule
-    public ExpectedException testOldXSDNaming = ExpectedException.none();
 
     private String message = "Dozer >= v6.0.0 uses a new XSD location. "
                              + "Your current config needs to be upgraded. "
@@ -33,13 +32,14 @@ public class Version5XSDTest {
 
     @Test
     public void doesOldXsdNamingThrowException() {
-        testOldXSDNaming.expectMessage(Matchers.containsString(message));
-        testOldXSDNaming.expect(MappingException.class);
+        Exception e = assertThrows(IllegalStateException.class, () -> {
+            Mapper mapper = DozerBeanMapperBuilder.create()
+                    .withMappingFiles("non-strict/v5-xsd.xml")
+                    .build();
 
-        Mapper mapper = DozerBeanMapperBuilder.create()
-                .withMappingFiles("non-strict/v5-xsd.xml")
-                .build();
+            mapper.getMappingMetadata();
+        });
 
-        mapper.getMappingMetadata();
+        assertTrue(Matchers.containsString(message).matches(e.getMessage()));
     }
 }

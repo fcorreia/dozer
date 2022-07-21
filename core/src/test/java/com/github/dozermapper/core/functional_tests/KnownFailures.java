@@ -33,11 +33,11 @@ import com.github.dozermapper.core.vo.map.House;
 import com.github.dozermapper.core.vo.map.Room;
 
 import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
  * This is a holding grounds for test cases that reproduce known bugs, features, or gaps discovered during development.

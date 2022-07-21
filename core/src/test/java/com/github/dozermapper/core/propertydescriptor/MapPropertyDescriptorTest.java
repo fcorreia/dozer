@@ -23,12 +23,10 @@ import com.github.dozermapper.core.MappingException;
 import com.github.dozermapper.core.config.BeanContainer;
 import com.github.dozermapper.core.factory.DestBeanCreator;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class MapPropertyDescriptorTest extends AbstractDozerTest {
 
@@ -36,7 +34,7 @@ public class MapPropertyDescriptorTest extends AbstractDozerTest {
     private BeanContainer beanContainer;
     private DestBeanCreator destBeanCreator;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         beanContainer = new BeanContainer();
         destBeanCreator = new DestBeanCreator(beanContainer);
@@ -50,11 +48,12 @@ public class MapPropertyDescriptorTest extends AbstractDozerTest {
         assertTrue(Arrays.equals(new Class[] {String.class, Object.class}, method.getParameterTypes()));
     }
 
-    @Test(expected = MappingException.class)
+    @Test
     public void testGetWriteMethod_NotFound() {
-        descriptor = new MapPropertyDescriptor(MapStructure.class, "", false, 0, "missing_set", "get", "key", null, null, beanContainer, destBeanCreator);
-        descriptor.getWriteMethod();
-        fail();
+        assertThrows(MappingException.class, () -> {
+            descriptor = new MapPropertyDescriptor(MapStructure.class, "", false, 0, "missing_set", "get", "key", null, null, beanContainer, destBeanCreator);
+            descriptor.getWriteMethod();
+        });
     }
 
     @Test

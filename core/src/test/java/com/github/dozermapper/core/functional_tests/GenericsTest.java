@@ -24,7 +24,7 @@ import com.github.dozermapper.core.vo.generics.parameterized.C;
 import com.github.dozermapper.core.vo.generics.parameterized.GenericTestType;
 
 import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class GenericsTest extends AbstractFunctionalTest {
 

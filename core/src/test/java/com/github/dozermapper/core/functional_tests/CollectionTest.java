@@ -15,16 +15,15 @@
  */
 package com.github.dozermapper.core.functional_tests;
 
+import com.github.dozermapper.core.vo.ArrayDest;
+import com.github.dozermapper.core.vo.ArraySource;
+import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import com.github.dozermapper.core.vo.ArrayDest;
-import com.github.dozermapper.core.vo.ArraySource;
-
-import org.junit.Assert;
-import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 /**
  * Collections and arrays test
@@ -51,7 +50,7 @@ public class CollectionTest extends AbstractFunctionalTest {
         mapper.map(sourceBean, destinationBean, "array");
 
         String[] destinationArray = destinationBean.getPreInitializedArray();
-        Assert.assertEquals(sourceArray.length + 2, destinationArray.length);
+        assertEquals(sourceArray.length + 2, destinationArray.length);
 
     }
 
@@ -59,8 +58,8 @@ public class CollectionTest extends AbstractFunctionalTest {
     public void testSetValueToNullArray() {
         ArraySource sourceBean = new ArraySource();
         ArrayDest arrayDest = mapper.map(sourceBean, ArrayDest.class, "single");
-        Assert.assertEquals(1, arrayDest.getArray().length);
-        Assert.assertNull("Element must contain null", arrayDest.getArray()[0]);
+        assertEquals(1, arrayDest.getArray().length);
+        assertNull("Element must contain null", arrayDest.getArray()[0]);
     }
 
     /**
@@ -70,17 +69,17 @@ public class CollectionTest extends AbstractFunctionalTest {
     public void testCollectionToPrimitiveArray() {
         ArraySource sourceBean = new ArraySource();
         List<Integer> srcList = new ArrayList<>();
-        srcList.add(new Integer(2));
-        srcList.add(new Integer(3));
-        srcList.add(new Integer(8));
+        srcList.add(Integer.valueOf(2));
+        srcList.add(Integer.valueOf(3));
+        srcList.add(Integer.valueOf(8));
         sourceBean.setListOfIntegers(srcList);
         ArrayDest destBean = mapper.map(sourceBean, ArrayDest.class);
 
         int[] resultPrimitiveIntArray = destBean.getPrimitiveIntArray();
         for (int i = 0; i < srcList.size(); i++) {
-            Integer srcValue = new Integer(srcList.get(i));
+            Integer srcValue = Integer.valueOf(srcList.get(i));
             int resultValue = resultPrimitiveIntArray[i];
-            assertEquals(srcValue, new Integer(resultValue));
+            assertEquals(srcValue, Integer.valueOf(resultValue));
         }
     }
 

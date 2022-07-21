@@ -164,6 +164,23 @@
             <artifactId>cglib-nodep</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -234,8 +251,8 @@
                             <configLocation>loose-checkstyle.xml</configLocation>
                             <suppressionsLocation>checkstyle-suppressions.xml</suppressionsLocation>
                             <consoleOutput>true</consoleOutput>
-                            <failOnViolation>true</failOnViolation>
-                            <failsOnError>true</failsOnError>
+                            <failOnViolation>false</failOnViolation>
+                            <failsOnError>false</failsOnError>
                             <encoding>UTF-8</encoding>
                             <sourceDirectory>${basedir}/src</sourceDirectory>
                         </configuration>

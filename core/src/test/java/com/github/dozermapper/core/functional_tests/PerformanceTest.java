@@ -30,8 +30,8 @@ import com.github.dozermapper.core.vo.perf.MyClassB;
 
 import org.apache.commons.lang3.time.StopWatch;
 import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

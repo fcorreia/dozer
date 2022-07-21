@@ -23,10 +23,10 @@ import com.github.dozermapper.core.vo.LoopObjectParentPrime;
 import com.github.dozermapper.core.vo.bidirectional.A;
 import com.github.dozermapper.core.vo.bidirectional.B;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class BiDirectionalMappingTest extends AbstractFunctionalTest {
 
@@ -39,7 +39,7 @@ public class BiDirectionalMappingTest extends AbstractFunctionalTest {
         src.setField1(field1);
 
         B dest = mapper.map(src, B.class);
-        assertNotNull("field1 should have been mapped", dest.getField1());
+        assertNotNull(dest.getField1(), "field1 should have been mapped");
     }
 
     @Test

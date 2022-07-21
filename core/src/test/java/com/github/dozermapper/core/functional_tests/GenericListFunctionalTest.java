@@ -19,10 +19,10 @@ import com.github.dozermapper.core.Mapper;
 import com.github.dozermapper.core.vo.Person1;
 import com.github.dozermapper.core.vo.Person2;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class GenericListFunctionalTest extends AbstractFunctionalTest {
 

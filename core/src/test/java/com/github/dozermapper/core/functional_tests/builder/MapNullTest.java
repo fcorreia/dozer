@@ -21,12 +21,12 @@ import com.github.dozermapper.core.functional_tests.AbstractFunctionalTest;
 import com.github.dozermapper.core.loader.api.BeanMappingBuilder;
 import com.github.dozermapper.core.loader.api.TypeMappingOptions;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.nullValue;
-import static org.junit.Assert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThat;
 
 public class MapNullTest extends AbstractFunctionalTest {
 

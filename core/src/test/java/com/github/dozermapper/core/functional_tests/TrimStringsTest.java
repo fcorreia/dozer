@@ -22,10 +22,10 @@ import com.github.dozermapper.core.vo.SimpleObjPrime;
 import com.github.dozermapper.core.vo.TestObject;
 import com.github.dozermapper.core.vo.TestObjectPrime;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TrimStringsTest extends AbstractFunctionalTest {
 

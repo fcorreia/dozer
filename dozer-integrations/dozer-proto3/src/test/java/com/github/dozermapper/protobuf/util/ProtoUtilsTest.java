@@ -24,7 +24,7 @@ import com.google.protobuf.Message;
 
 import org.hamcrest.core.IsInstanceOf;
 import org.junit.Rule;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.assertNotNull;

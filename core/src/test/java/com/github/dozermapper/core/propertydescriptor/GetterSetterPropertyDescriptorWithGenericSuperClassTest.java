@@ -22,10 +22,10 @@ import com.github.dozermapper.core.fieldmap.DozerField;
 import com.github.dozermapper.core.vo.deep3.Dest;
 import com.github.dozermapper.core.vo.deep3.NestedDest;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class GetterSetterPropertyDescriptorWithGenericSuperClassTest extends AbstractDozerTest {
     @Test
@@ -37,7 +37,7 @@ public class GetterSetterPropertyDescriptorWithGenericSuperClassTest extends Abs
                                                                        dozerField.getIndex(), null, null, beanContainer, new DestBeanCreator(beanContainer));
         Class<?> clazz = pd.genericType();
 
-        assertNotNull("clazz should not be null", clazz);
-        assertEquals("NestedDest generic type", NestedDest.class, clazz);
+        assertNotNull(clazz, "clazz should not be null");
+        assertEquals(NestedDest.class, clazz, "NestedDest generic type");
     }
 }

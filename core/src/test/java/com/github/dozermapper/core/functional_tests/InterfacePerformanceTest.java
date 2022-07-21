@@ -19,7 +19,7 @@ import com.github.dozermapper.core.vo.iface.ApplicationUser;
 import com.github.dozermapper.core.vo.iface.Subscriber;
 import com.github.dozermapper.core.vo.iface.UpdateMember;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

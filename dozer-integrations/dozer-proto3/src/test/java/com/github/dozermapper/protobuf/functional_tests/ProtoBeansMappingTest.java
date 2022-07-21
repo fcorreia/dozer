@@ -43,7 +43,7 @@ import com.github.dozermapper.protobuf.vo.proto.TestObjectContainer;
 import org.hamcrest.core.IsInstanceOf;
 import org.junit.BeforeClass;
 import org.junit.Rule;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.assertEquals;

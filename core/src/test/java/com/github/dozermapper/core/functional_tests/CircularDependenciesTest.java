@@ -18,18 +18,18 @@ package com.github.dozermapper.core.functional_tests;
 import com.github.dozermapper.core.DozerBeanMapperBuilder;
 import com.github.dozermapper.core.Mapper;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class CircularDependenciesTest extends AbstractFunctionalTest {
 
     private Mapper mapper;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         mapper = DozerBeanMapperBuilder.buildDefault();
     }

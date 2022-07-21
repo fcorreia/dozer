@@ -19,9 +19,9 @@ import com.github.dozermapper.core.config.BeanContainer;
 import com.github.dozermapper.core.factory.DestBeanCreator;
 import com.github.dozermapper.core.propertydescriptor.PropertyDescriptorFactory;
 
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.Rule;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.rules.ExpectedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

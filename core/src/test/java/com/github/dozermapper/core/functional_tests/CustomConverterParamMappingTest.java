@@ -22,17 +22,17 @@ import com.github.dozermapper.core.vo.Fruit;
 import com.github.dozermapper.core.vo.Individual;
 import com.github.dozermapper.core.vo.SimpleObj;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CustomConverterParamMappingTest extends AbstractFunctionalTest {
 
     @Override
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         mapper = getMapper("mappings/fieldCustomConverterParam.xml");
     }
@@ -47,11 +47,11 @@ public class CustomConverterParamMappingTest extends AbstractFunctionalTest {
         // Custom converter specified for the field1 mapping, so verify custom converter was actually used
         assertNotNull("dest field1 should not be null", dest.getField3());
         StringTokenizer st = new StringTokenizer(dest.getField3(), "-");
-        assertEquals("dest field1 value should contain a hyphon", 2, st.countTokens());
+        assertEquals(2, st.countTokens(), "dest field1 value should contain a hyphon");
         String token1 = st.nextToken();
-        assertEquals("1st portion of dest field1 value should equal src field value", src.getField1(), token1);
+        assertEquals(src.getField1(), token1, "1st portion of dest field1 value should equal src field value");
         String token2 = st.nextToken();
-        assertEquals("custom converter param should have been appended to by the cust converter", "CustomConverterParamTest", token2);
+        assertEquals("CustomConverterParamTest", token2, "custom converter param should have been appended to by the cust converter");
 
     }
 

@@ -20,8 +20,8 @@ import com.github.dozermapper.core.factory.DestBeanCreator;
 import com.github.dozermapper.core.propertydescriptor.PropertyDescriptorFactory;
 import com.github.dozermapper.protobuf.vo.proto.ProtoTestObjects;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.Assert.assertTrue;
 

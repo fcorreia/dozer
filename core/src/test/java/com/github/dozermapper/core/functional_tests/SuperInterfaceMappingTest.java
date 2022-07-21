@@ -18,7 +18,7 @@ package com.github.dozermapper.core.functional_tests;
 import java.io.Serializable;
 
 import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class SuperInterfaceMappingTest extends AbstractFunctionalTest {
 

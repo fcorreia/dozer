@@ -20,14 +20,14 @@ import java.util.Locale;
 import com.github.dozermapper.core.MappingException;
 
 import org.hamcrest.Matchers;
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.Rule;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.rules.ExpectedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class InvalidMapping_WithExceptionsLoggedTest extends AbstractFunctionalTest {
 

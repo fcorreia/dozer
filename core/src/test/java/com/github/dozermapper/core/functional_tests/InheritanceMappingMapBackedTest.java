@@ -19,9 +19,10 @@ import java.util.Map;
 
 import com.github.dozermapper.core.vo.inheritance.A;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public class InheritanceMappingMapBackedTest extends AbstractFunctionalTest {
 
@@ -51,7 +52,7 @@ public class InheritanceMappingMapBackedTest extends AbstractFunctionalTest {
         A mappedSrc = mapper.map(dest, A.class);
         Map mappedDest = mapper.map(mappedSrc, Map.class);
 
-        assertEquals("objects not mapped correctly bi-directional", dest, mappedDest);
+        assertEquals(dest, mappedDest, "objects not mapped correctly bi-directional");
     }
 
     private A createA() {

@@ -20,16 +20,16 @@ import com.github.dozermapper.core.vo.inheritance.cc.C;
 import com.github.dozermapper.core.vo.inheritance.cc.X;
 import com.github.dozermapper.core.vo.inheritance.cc.Z;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class InheritanceCustomConverterTest extends AbstractFunctionalTest {
 
     @Override
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         super.setUp();
         mapper = getMapper("mappings/inheritanceBug.xml");

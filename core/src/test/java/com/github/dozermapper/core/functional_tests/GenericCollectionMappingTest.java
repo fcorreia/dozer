@@ -15,6 +15,12 @@
  */
 package com.github.dozermapper.core.functional_tests;
 
+import com.github.dozermapper.core.Mapper;
+import com.github.dozermapper.core.vo.generics.*;
+import com.github.dozermapper.core.vo.generics.deepindex.*;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -23,28 +29,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import com.github.dozermapper.core.Mapper;
-import com.github.dozermapper.core.vo.generics.Status;
-import com.github.dozermapper.core.vo.generics.User;
-import com.github.dozermapper.core.vo.generics.UserGroup;
-import com.github.dozermapper.core.vo.generics.UserGroupPrime;
-import com.github.dozermapper.core.vo.generics.UserPrime;
-import com.github.dozermapper.core.vo.generics.deepindex.AnotherTestObject;
-import com.github.dozermapper.core.vo.generics.deepindex.DestDeepObj;
-import com.github.dozermapper.core.vo.generics.deepindex.Family;
-import com.github.dozermapper.core.vo.generics.deepindex.HeadOfHouseHold;
-import com.github.dozermapper.core.vo.generics.deepindex.Pet;
-import com.github.dozermapper.core.vo.generics.deepindex.SrcDeepObj;
-import com.github.dozermapper.core.vo.generics.deepindex.TestObject;
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Ignore;
-import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
-@Ignore("Failing with cglib")
+@Disabled("Failing with cglib")
 public class GenericCollectionMappingTest extends AbstractFunctionalTest {
 
     @Test
@@ -76,7 +64,7 @@ public class GenericCollectionMappingTest extends AbstractFunctionalTest {
         Method setter = UserGroupPrime.class.getMethod("setUsers", List.class);
         Type[] parameterTypes = setter.getGenericParameterTypes();
         assertEquals(1, parameterTypes.length);
-        ParameterizedType parameterType = (ParameterizedType)parameterTypes[0];
+        ParameterizedType parameterType = (ParameterizedType) parameterTypes[0];
         assertEquals(List.class, parameterType.getRawType());
         assertEquals(UserPrime.class, parameterType.getActualTypeArguments()[0]);
 
@@ -88,8 +76,8 @@ public class GenericCollectionMappingTest extends AbstractFunctionalTest {
         List<?> usersPrime = userGroupPrime.getUsers();
         assertNotNull(usersPrime);
         assertEquals(2, usersPrime.size());
-        assertTrue("Expecting instance of UserPrime.", usersPrime.get(0) instanceof UserPrime);
-        assertTrue("Expecting instance of UserPrime.", usersPrime.get(1) instanceof UserPrime);
+        assertTrue(usersPrime.get(0) instanceof UserPrime, "Expecting instance of UserPrime.");
+        assertTrue(usersPrime.get(1) instanceof UserPrime, "Expecting instance of UserPrime.");
         assertEquals("SUCCESS", userGroupPrime.getStatusPrime().name());
 
         // Map the other way
@@ -97,7 +85,7 @@ public class GenericCollectionMappingTest extends AbstractFunctionalTest {
         Set<?> usersGroupPrime = userGroupMapBack.getUsers();
         assertNotNull(usersGroupPrime);
         assertEquals(2, usersGroupPrime.size());
-        assertTrue("Expecting instance of UserPrime.", usersGroupPrime.iterator().next() instanceof User);
+        assertTrue(usersGroupPrime.iterator().next() instanceof User, "Expecting instance of UserPrime.");
     }
 
     @Test
@@ -134,17 +122,17 @@ public class GenericCollectionMappingTest extends AbstractFunctionalTest {
     public void testDeepMapIndexed() {
         Mapper mapper = getMapper("mappings/genericCollectionMapping.xml");
         Pet[] myPets = new Pet[2];
-        Family source = newInstance(Family.class, new Object[] {"john", "jane", "doe", new Integer(22000), new Integer(20000)});
-        Pet firstPet = newInstance(Pet.class, new Object[] {"molly", 2});
+        Family source = newInstance(Family.class, new Object[]{"john", "jane", "doe", Integer.valueOf(22000), Integer.valueOf(20000)});
+        Pet firstPet = newInstance(Pet.class, new Object[]{"molly", 2});
         myPets[0] = firstPet;
 
         Pet[] offSprings = new Pet[4];
-        offSprings[0] = newInstance(Pet.class, new Object[] {"Rocky1", 1});
-        offSprings[1] = newInstance(Pet.class, new Object[] {"Rocky2", 1});
-        offSprings[2] = newInstance(Pet.class, new Object[] {"Rocky3", 1});
-        offSprings[3] = newInstance(Pet.class, new Object[] {"Rocky4", 1});
+        offSprings[0] = newInstance(Pet.class, new Object[]{"Rocky1", 1});
+        offSprings[1] = newInstance(Pet.class, new Object[]{"Rocky2", 1});
+        offSprings[2] = newInstance(Pet.class, new Object[]{"Rocky3", 1});
+        offSprings[3] = newInstance(Pet.class, new Object[]{"Rocky4", 1});
 
-        Pet secondPet = newInstance(Pet.class, new Object[] {"Rocky", 3, offSprings});
+        Pet secondPet = newInstance(Pet.class, new Object[]{"Rocky", 3, offSprings});
         myPets[1] = secondPet;
 
         // Save the pet details into the source object
@@ -166,7 +154,7 @@ public class GenericCollectionMappingTest extends AbstractFunctionalTest {
         source.setFirstName("Tom");
         source.setLastName("Roy");
         source.setPetName("Ronny");
-        source.setSalary(new Integer(15000));
+        source.setSalary(Integer.valueOf(15000));
         source.setPetAge("2");
         source.setOffSpringName("Ronny2");
 

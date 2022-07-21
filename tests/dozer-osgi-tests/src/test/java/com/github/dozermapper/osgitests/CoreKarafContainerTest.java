@@ -21,7 +21,7 @@ import com.github.dozermapper.core.el.ELExpressionFactory;
 import com.github.dozermapper.core.osgi.OSGiClassLoader;
 import com.github.dozermapper.osgitestsmodel.Person;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.ops4j.pax.exam.Configuration;
 import org.ops4j.pax.exam.Option;
@@ -31,7 +31,7 @@ import org.ops4j.pax.exam.spi.reactors.PerClass;
 
 import static com.github.dozermapper.osgitests.support.BundleOptions.coreBundles;
 import static com.github.dozermapper.osgitests.support.BundleOptions.optionalBundles;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.ops4j.pax.exam.CoreOptions.junitBundles;

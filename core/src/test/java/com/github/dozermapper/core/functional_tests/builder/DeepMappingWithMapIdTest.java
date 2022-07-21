@@ -31,7 +31,7 @@ import com.github.dozermapper.core.loader.api.FieldsMappingOptions;
 import com.github.dozermapper.core.loader.api.TypeMappingOptions;
 
 import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * This test is to verify that the builder with the specified mapid is being used for the objects within a collection contained within an object which is being mapped.

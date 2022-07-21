@@ -41,16 +41,16 @@ import com.github.dozermapper.core.vo.deepindex.isaccessible.FlatPerson;
 import com.github.dozermapper.core.vo.deepindex.isaccessible.Person;
 import com.github.dozermapper.core.vo.deepindex.isaccessible.Phone;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class DeepMappingWithIndexTest extends AbstractFunctionalTest {
 
     @Override
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         mapper = getMapper("mappings/deepMappingWithIndexedFields.xml");
     }
@@ -87,7 +87,7 @@ public class DeepMappingWithIndexTest extends AbstractFunctionalTest {
     @Test
     public void testDeepMappingWithIndexOnDestField() {
         DestDeepObj src = newInstance(DestDeepObj.class);
-        src.setDest2(new Integer(857557));
+        src.setDest2(Integer.valueOf(857557));
         src.setDest5("789777");
 
         SrcDeepObj dest = mapper.map(src, SrcDeepObj.class);
@@ -99,7 +99,7 @@ public class DeepMappingWithIndexTest extends AbstractFunctionalTest {
     @Test
     public void testDeepMapIndexed() {
         Pet[] myPets = new Pet[2];
-        Family source = new Family("john", "jane", "doe", new Integer(22000), new Integer(20000));
+        Family source = new Family("john", "jane", "doe", Integer.valueOf(22000), Integer.valueOf(20000));
         Pet firstPet = new Pet("molly", 2, null);
         myPets[0] = firstPet;
 
@@ -130,7 +130,7 @@ public class DeepMappingWithIndexTest extends AbstractFunctionalTest {
         source.setFirstName("Tom");
         source.setLastName("Roy");
         source.setPetName("Ronny");
-        source.setSalary(new Integer(15000));
+        source.setSalary(Integer.valueOf(15000));
         source.setPetAge("2");
         source.setOffSpringName("Ronny2");
 
@@ -151,7 +151,7 @@ public class DeepMappingWithIndexTest extends AbstractFunctionalTest {
         sourceHouseHold.setFirstName("Tom");
         sourceHouseHold.setLastName("Roy");
         sourceHouseHold.setPetName("Ronny");
-        sourceHouseHold.setSalary(new Integer(15000));
+        sourceHouseHold.setSalary(Integer.valueOf(15000));
         sourceHouseHold.setPetAge("2");
         sourceHouseHold.setOffSpringName("Ronny2");
 
@@ -216,8 +216,8 @@ public class DeepMappingWithIndexTest extends AbstractFunctionalTest {
         mapper = getMapper("mappings/deepMappingWithIndexedFieldsByCustomConverter.xml");
         First first = new First();
         Last last = mapper.map(first, Last.class);
-        assertNotNull("nested third object should not be null", last.getThird());
-        assertNotNull("name should not be null", last.getThird().getName());
+        assertNotNull(last.getThird(), "nested third object should not be null");
+        assertNotNull(last.getThird().getName(), "name should not be null");
         assertEquals(first.getSecondArray()[0].getThirdArray()[7].getName(), last.getThird().getName());
     }
 
@@ -226,12 +226,12 @@ public class DeepMappingWithIndexTest extends AbstractFunctionalTest {
     public void testDeepIndexMapping_CollectionNeedsResizing() {
         mapper = getMapper("mappings/deepMappingWithIndexedFields.xml");
         A src = new A();
-        src.setId1(new Integer(10));
-        src.setId2(new Integer(20));
+        src.setId1(Integer.valueOf(10));
+        src.setId2(Integer.valueOf(20));
 
         B dest = mapper.map(src, B.class);
-        assertEquals("wrong value for id1", src.getId1().intValue(), dest.getFoo()[0].getId());
-        assertEquals("wrong value for id2", src.getId2().intValue(), dest.getFoo()[1].getId());
+        assertEquals(src.getId1().intValue(), dest.getFoo()[0].getId(), "wrong value for id1");
+        assertEquals(src.getId2().intValue(), dest.getFoo()[1].getId(), "wrong value for id2");
     }
 
 }

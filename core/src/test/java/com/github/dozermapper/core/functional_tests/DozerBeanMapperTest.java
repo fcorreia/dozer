@@ -28,14 +28,11 @@ import com.github.dozermapper.core.vo.MetalThingyIF;
 import com.github.dozermapper.core.vo.TestObject;
 import com.github.dozermapper.core.vo.TestObjectPrime;
 import com.github.dozermapper.core.vo.Van;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.fail;
 
 /**
  * Very high level tests of the DozerBeanMapper. This test class is not intended to provide in-depth testing of all the
@@ -48,35 +45,31 @@ public class DozerBeanMapperTest extends AbstractDozerTest {
     private TestDataFactory testDataFactory = new TestDataFactory(NoProxyDataObjectInstantiator.INSTANCE);
 
     @Override
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         mapper = DozerBeanMapperBuilder.create()
                 .withMappingFiles("mappings/testDozerBeanMapping.xml")
                 .build();
     }
 
-    @Test(expected = MappingException.class)
+    @Test
     public void testNoSourceObject() {
-        mapper.map(null, TestObjectPrime.class);
-        fail("should have thrown exception");
+        assertThrows(MappingException.class, ()-> mapper.map(null, TestObjectPrime.class));
     }
 
-    @Test(expected = MappingException.class)
+    @Test
     public void testNoDestinationClass() {
-        mapper.map(new TestObjectPrime(), null);
-        fail("should have thrown exception");
+        assertThrows(MappingException.class, ()-> mapper.map(new TestObjectPrime(), null));
     }
 
-    @Test(expected = MappingException.class)
+    @Test
     public void testNullDestObj() {
-        mapper.map(new TestObject(), null);
-        fail("should have thrown mapping exception");
+        assertThrows(MappingException.class, ()-> mapper.map(new TestObject(), null));
     }
 
-    @Test(expected = MappingException.class)
+    @Test
     public void testMapIdDoesNotExist() {
-        mapper.map(new TestObject(), TestObjectPrime.class, "thisMapIdDoesNotExist");
-        fail("should have thrown exception");
+        assertThrows(MappingException.class, ()-> mapper.map(new TestObject(), TestObjectPrime.class, "thisMapIdDoesNotExist"));
     }
 
     @Test
@@ -93,14 +86,17 @@ public class DozerBeanMapperTest extends AbstractDozerTest {
         assertCommon(mapper);
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testDetectDuplicateMapping() {
-        Mapper myMapper = DozerBeanMapperBuilder.create()
-                .withMappingFiles("mappings/duplicateMapping.xml")
-                .build();
+        assertThrows(IllegalArgumentException.class, ()-> {
+            Mapper myMapper = DozerBeanMapperBuilder.create()
+                    .withMappingFiles("mappings/duplicateMapping.xml")
+                    .build();
 
-        myMapper.map(new com.github.dozermapper.core.vo.SuperSuperSuperClass(), com.github.dozermapper.core.vo.SuperSuperSuperClassPrime.class);
-        fail("should have thrown exception");
+            myMapper.map(new com.github.dozermapper.core.vo.SuperSuperSuperClass(), com.github.dozermapper.core.vo.SuperSuperSuperClassPrime.class);
+
+        });
+
     }
 
     @Test

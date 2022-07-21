@@ -26,7 +26,7 @@ import com.github.dozermapper.core.vo.enumtest.MyBeanPrimeString;
 import com.github.dozermapper.core.vo.enumtest.SrcType;
 
 import org.junit.Rule;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.rules.ExpectedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

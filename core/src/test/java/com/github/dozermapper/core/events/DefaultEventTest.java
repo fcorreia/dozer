@@ -18,9 +18,9 @@ package com.github.dozermapper.core.events;
 import com.github.dozermapper.core.classmap.ClassMap;
 import com.github.dozermapper.core.fieldmap.FieldMap;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.mock;
 
 public class DefaultEventTest {

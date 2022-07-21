@@ -34,10 +34,10 @@ import com.github.dozermapper.core.vo.enumtest.SrcTypeWithOverride;
 import org.hamcrest.core.IsInstanceOf;
 import org.junit.BeforeClass;
 import org.junit.Rule;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.rules.ExpectedException;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Functional test for enum mapping as described

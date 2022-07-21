@@ -19,7 +19,7 @@ import com.github.dozermapper.core.DozerBeanMapper;
 import com.github.dozermapper.core.Mapper;
 import com.github.dozermapper.spring.functional_tests.support.ReferencingBean;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;

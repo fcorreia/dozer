@@ -15,17 +15,18 @@
  */
 package com.github.dozermapper.core.functional_tests;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public class ImmutableMappingTest extends AbstractFunctionalTest {
 
     private static final String TEST_STRING = "testString";
     private static final Integer TEST_INTEGER = 13;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         mapper = getMapper("mappings/immutable.xml");
     }

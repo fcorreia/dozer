@@ -15,26 +15,22 @@
  */
 package com.github.dozermapper.core;
 
+import com.github.dozermapper.core.vo.A;
+import com.github.dozermapper.core.vo.B;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import com.github.dozermapper.core.vo.A;
-import com.github.dozermapper.core.vo.B;
-
-import org.junit.Before;
-import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class MappingProcessorTest extends AbstractDozerTest {
 
     private ArrayList<Object> sourceList;
     private ArrayList<Object> destinationList;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         sourceList = new ArrayList<>();
         destinationList = new ArrayList<>();

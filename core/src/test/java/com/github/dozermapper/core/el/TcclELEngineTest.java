@@ -15,7 +15,7 @@
  */
 package com.github.dozermapper.core.el;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class TcclELEngineTest extends DefaultELEngineTest {
 

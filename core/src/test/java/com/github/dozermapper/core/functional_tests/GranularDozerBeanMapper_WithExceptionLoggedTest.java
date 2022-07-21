@@ -25,12 +25,12 @@ import com.github.dozermapper.core.vo.allowedexceptions.ThrowException;
 import com.github.dozermapper.core.vo.allowedexceptions.ThrowExceptionPrime;
 
 import org.junit.Rule;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.rules.ExpectedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class GranularDozerBeanMapper_WithExceptionLoggedTest extends AbstractFunctionalTest {
 

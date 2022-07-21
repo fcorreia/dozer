@@ -23,10 +23,10 @@ import java.net.URL;
 import com.github.dozermapper.core.AbstractDozerTest;
 import com.github.dozermapper.core.MappingException;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class ResourceLoaderTest extends AbstractDozerTest {
 

@@ -28,7 +28,7 @@ import java.util.stream.Stream;
 import com.github.dozermapper.core.config.BeanContainer;
 import com.github.dozermapper.core.el.NoopELEngine;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class BeanMappingXMLBuilderTest {
 

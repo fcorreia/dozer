@@ -15,26 +15,18 @@
  */
 package com.github.dozermapper.core.functional_tests;
 
+import com.github.dozermapper.core.vo.inheritance.hints.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import java.util.HashSet;
 
-import com.github.dozermapper.core.vo.inheritance.hints.Base;
-import com.github.dozermapper.core.vo.inheritance.hints.Base2;
-import com.github.dozermapper.core.vo.inheritance.hints.BaseA;
-import com.github.dozermapper.core.vo.inheritance.hints.BaseB;
-import com.github.dozermapper.core.vo.inheritance.hints.Source;
-import com.github.dozermapper.core.vo.inheritance.hints.Target;
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Before;
-import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNotSame;
-import static org.junit.Assert.assertTrue;
 
 public class IneritanceHintSupportTest extends AbstractFunctionalTest {
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         super.setUp();
         mapper = getMapper("mappings/inheritanceHints.xml");

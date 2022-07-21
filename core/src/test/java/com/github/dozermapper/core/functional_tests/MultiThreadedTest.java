@@ -20,8 +20,8 @@ import com.github.dozermapper.core.vo.TestObjectPrime;
 import com.github.dozermapper.core.vo.inheritance.AnotherSubClass;
 import com.github.dozermapper.core.vo.inheritance.AnotherSubClassPrime;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class MultiThreadedTest extends AbstractFunctionalTest {
 

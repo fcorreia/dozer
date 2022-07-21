@@ -27,9 +27,9 @@ import com.github.dozermapper.core.vo.deep2.Dest;
 import com.github.dozermapper.core.vo.deep2.NestedDest;
 import com.github.dozermapper.core.vo.deep2.NestedNestedDest;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SimpleTest {
 

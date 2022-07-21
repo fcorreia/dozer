@@ -22,7 +22,7 @@ import com.github.dozermapper.core.osgi.OSGiClassLoader;
 import com.github.dozermapper.osgitests.support.BundleOptions;
 import com.github.dozermapper.protobuf.ProtobufSupportModule;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.ops4j.pax.exam.Configuration;
 import org.ops4j.pax.exam.Option;

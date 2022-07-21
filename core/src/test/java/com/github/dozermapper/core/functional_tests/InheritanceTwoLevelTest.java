@@ -19,11 +19,11 @@ import com.github.dozermapper.core.vo.inheritance.twolevel.A;
 import com.github.dozermapper.core.vo.inheritance.twolevel.B;
 import com.github.dozermapper.core.vo.inheritance.twolevel.C;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class InheritanceTwoLevelTest extends AbstractFunctionalTest {
 

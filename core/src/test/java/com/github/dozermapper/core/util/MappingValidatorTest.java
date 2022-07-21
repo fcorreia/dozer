@@ -19,9 +19,9 @@ import com.github.dozermapper.core.AbstractDozerTest;
 import com.github.dozermapper.core.MappingException;
 import com.github.dozermapper.core.config.BeanContainer;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class MappingValidatorTest extends AbstractDozerTest {
 

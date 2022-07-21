@@ -21,7 +21,7 @@ import com.github.dozermapper.core.config.SettingsDefaults;
 import com.github.dozermapper.core.config.SettingsKeys;
 import com.github.dozermapper.core.util.DozerConstants;
 
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 
 public abstract class AbstractDozerTest {
 

@@ -23,11 +23,11 @@ import com.github.dozermapper.core.config.BeanContainer;
 import com.github.dozermapper.core.factory.DestBeanCreator;
 import com.github.dozermapper.core.propertydescriptor.PropertyDescriptorFactory;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.junit.Assert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThat;
 
 public class MappingStreamReaderTest {
 

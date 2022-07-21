@@ -25,10 +25,10 @@ import com.github.dozermapper.core.config.BeanContainer;
 
 import org.hamcrest.Matchers;
 import org.junit.Rule;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.rules.ExpectedException;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class SchemaLSResourceResolverTest {
 

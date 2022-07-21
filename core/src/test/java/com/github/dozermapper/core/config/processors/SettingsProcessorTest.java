@@ -18,9 +18,9 @@ package com.github.dozermapper.core.config.processors;
 import com.github.dozermapper.core.config.Settings;
 import com.github.dozermapper.core.util.DefaultClassLoader;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class SettingsProcessorTest {
 

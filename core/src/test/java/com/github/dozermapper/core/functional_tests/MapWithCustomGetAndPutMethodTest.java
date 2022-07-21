@@ -24,11 +24,11 @@ import com.github.dozermapper.core.loader.api.BeanMappingBuilder;
 import com.github.dozermapper.core.loader.api.TypeDefinition;
 
 import org.hamcrest.number.IsCloseTo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class MapWithCustomGetAndPutMethodTest extends AbstractFunctionalTest {
 

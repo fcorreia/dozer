@@ -19,22 +19,22 @@ import java.beans.PropertyDescriptor;
 import java.lang.reflect.Method;
 
 import com.github.dozermapper.core.AbstractDozerTest;
+import com.github.dozermapper.core.MappingException;
 import com.github.dozermapper.core.config.BeanContainer;
 import com.github.dozermapper.core.factory.DestBeanCreator;
 import com.github.dozermapper.core.fieldmap.DozerField;
 import com.github.dozermapper.core.vo.deep2.Dest;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.internal.util.reflection.Whitebox;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class GetterSetterPropertyDescriptorTest extends AbstractDozerTest {
     private JavaBeanPropertyDescriptor javaBeanPropertyDescriptor;
 
-    @Before
+    @BeforeEach
     public void setup() {
         DozerField dozerField = new DozerField("destField", "generic");
 
@@ -48,7 +48,7 @@ public class GetterSetterPropertyDescriptorTest extends AbstractDozerTest {
     public void testGetReadMethod() throws Exception {
         Method method = javaBeanPropertyDescriptor.getReadMethod();
 
-        assertNotNull("method should not be null", method);
+        assertNotNull(method, "method should not be null");
         assertEquals("incorrect method found", "getDestField", method.getName());
     }
 
@@ -74,13 +74,15 @@ public class GetterSetterPropertyDescriptorTest extends AbstractDozerTest {
      * attempt recovery and don't find anything, we must give up instead of endlessly
      * trying to recover.
      */
-    @Test(expected = NoSuchMethodException.class)
+    @Test
     public void testGetWriteMethodOnlyAttemptsRecoveryOnce() throws Exception {
-        initializePropertyDescriptor();
-        nullPropertyDescriptorMethod(true);
-        setRefreshAlreadyAttempted();
+        assertThrows(NoSuchMethodException.class, () -> {
+            initializePropertyDescriptor();
+            nullPropertyDescriptorMethod(true);
+            setRefreshAlreadyAttempted();
 
-        javaBeanPropertyDescriptor.getWriteMethod();
+            javaBeanPropertyDescriptor.getWriteMethod();
+        });
     }
 
     /**
@@ -98,13 +100,15 @@ public class GetterSetterPropertyDescriptorTest extends AbstractDozerTest {
     /**
      * See {@link #testGetWriteMethodOnlyAttemptsRecoveryOnce()}
      */
-    @Test(expected = NoSuchMethodException.class)
+    @Test
     public void testGetReadMethodOnlyAttemptsRecoveryOnce() throws Exception {
-        initializePropertyDescriptor();
-        nullPropertyDescriptorMethod(false);
-        setRefreshAlreadyAttempted();
+        assertThrows(NoSuchMethodException.class, () -> {
+            initializePropertyDescriptor();
+            nullPropertyDescriptorMethod(false);
+            setRefreshAlreadyAttempted();
 
-        javaBeanPropertyDescriptor.getReadMethod();
+            javaBeanPropertyDescriptor.getReadMethod();
+        });
     }
 
     private void initializePropertyDescriptor() throws Exception {

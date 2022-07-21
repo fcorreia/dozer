@@ -28,8 +28,8 @@ import com.github.dozermapper.spring.functional_tests.support.MyBeanMapperBuilde
 import com.github.dozermapper.spring.vo.Destination;
 import com.github.dozermapper.spring.vo.Source;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import static org.junit.Assert.assertEquals;

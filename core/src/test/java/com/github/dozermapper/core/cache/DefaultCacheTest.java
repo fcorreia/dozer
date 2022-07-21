@@ -18,12 +18,12 @@ package com.github.dozermapper.core.cache;
 import com.github.dozermapper.core.AbstractDozerTest;
 
 import org.junit.Rule;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class DefaultCacheTest extends AbstractDozerTest {
 
