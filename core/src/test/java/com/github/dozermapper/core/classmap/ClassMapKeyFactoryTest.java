@@ -30,7 +30,7 @@ public class ClassMapKeyFactoryTest extends AbstractDozerTest {
 
     private ClassMapKeyFactory factory;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         BeanContainer beanContainer = new BeanContainer();
         factory = new ClassMapKeyFactory(beanContainer);

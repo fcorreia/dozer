@@ -42,7 +42,7 @@ public class DefaultCacheManagerTest extends AbstractDozerTest {
     private CacheManager cacheMgr;
 
     @Override
-    @Before
+    @BeforeEach
     public void setUp() {
         cacheMgr = new DefaultCacheManager();
     }

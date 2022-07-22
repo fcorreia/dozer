@@ -38,7 +38,7 @@ public class DateConverterTest extends AbstractDozerTest {
 
     private DateConverter converter;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         super.setUp();
         converter = new DateConverter(new SimpleDateFormat("dd.MM.yyyy"));

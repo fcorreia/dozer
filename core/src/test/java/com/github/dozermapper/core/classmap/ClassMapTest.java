@@ -41,7 +41,7 @@ public class ClassMapTest extends AbstractDozerTest {
     private PropertyDescriptorFactory propertyDescriptorFactory;
 
     @Override
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         Configuration globalConfiguration = new Configuration();
         classMap = new ClassMap(globalConfiguration);

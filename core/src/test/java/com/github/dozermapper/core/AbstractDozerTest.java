@@ -27,7 +27,7 @@ public abstract class AbstractDozerTest {
 
     private static Random rand = new Random(System.currentTimeMillis());
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         System.setProperty("log4j.debug", "true");
         System.setProperty(DozerConstants.DEBUG_SYS_PROP, "true");

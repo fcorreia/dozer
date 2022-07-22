@@ -45,7 +45,7 @@ public class JAXBElementConverterTest extends AbstractDozerTest {
     private JAXBElementConverter converter;
     private BeanContainer beanContainer;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         super.setUp();
         beanContainer = new BeanContainer();

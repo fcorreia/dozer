@@ -27,13 +27,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.junit.jupiter.api.Assertions.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class MappingStreamReaderTest {
 
     private MappingStreamReader streamReader;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         BeanContainer beanContainer = new BeanContainer();
         DestBeanCreator destBeanCreator = new DestBeanCreator(beanContainer);

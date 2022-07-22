@@ -44,7 +44,7 @@ public abstract class AbstractFunctionalTest {
         return InstantiatorHolder.get();
     }
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         System.setProperty("log4j.debug", "true");
         System.setProperty(DozerConstants.DEBUG_SYS_PROP, "true");

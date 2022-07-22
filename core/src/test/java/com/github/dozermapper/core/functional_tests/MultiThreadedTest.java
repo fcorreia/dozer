@@ -26,7 +26,7 @@ import org.junit.jupiter.api.Test;
 public class MultiThreadedTest extends AbstractFunctionalTest {
 
     @Override
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         mapper = getMapper("mappings/testDozerBeanMapping.xml");
     }

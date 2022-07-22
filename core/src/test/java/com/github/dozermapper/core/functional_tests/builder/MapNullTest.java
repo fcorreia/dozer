@@ -26,14 +26,14 @@ import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.nullValue;
-import static org.junit.jupiter.api.Assertions.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class MapNullTest extends AbstractFunctionalTest {
 
     private Source source;
     private Destination destination;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         source = new Source();
         destination = new Destination();

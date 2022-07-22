@@ -28,7 +28,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class InheritanceTwoLevelTest extends AbstractFunctionalTest {
 
     @Override
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         mapper = getMapper("mappings/inheritanceTwoLevel.xml");
     }

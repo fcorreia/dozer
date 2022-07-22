@@ -32,6 +32,7 @@ import org.apache.commons.lang3.time.StopWatch;
 import org.junit.After;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Timeout;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -44,7 +45,7 @@ public class PerformanceTest extends AbstractFunctionalTest {
     private int numIters = numItersProperty <= 0 ? 1 : numItersProperty; // Set this attribute to 25000 to run performance regression
 
     @Override
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         if (mapper == null) {
             mapper = getMapper("mappings/testDozerBeanMapping.xml");
@@ -161,35 +162,40 @@ public class PerformanceTest extends AbstractFunctionalTest {
      * jdk1.6 #1 7531 #2 938 #3 969 #4 3812 #5 2750 #6 15172
      */
 
-    @Test(timeout = 35000)
+    @Test
+    @Timeout(35000)
     public void testMapping1() {
         // TestObject --> TestObjectPrime
         TestObject src = testDataFactory.getInputGeneralMappingTestObject();
         runGeneric("testMapping1", src, TestObjectPrime.class);
     }
 
-    @Test(timeout = 3600)
+    @Test
+    @Timeout(3600)
     public void testMapping2() {
         // SimpleObject --> SimpleObjectPrime
         SimpleObj src = testDataFactory.getSimpleObj();
         runGeneric("testMapping2", src, SimpleObjPrime.class);
     }
 
-    @Test(timeout = 3700)
+    @Test
+    @Timeout(3700)
     public void testMapping3() {
         // SimpleObject --> SimpleObjectPrime2
         SimpleObj src = testDataFactory.getSimpleObj();
         runGeneric("testMapping3", src, SimpleObjPrime2.class);
     }
 
-    @Test(timeout = 12000)
+    @Test
+    @Timeout(12000)
     public void testMapping4() {
         // AnotherSubClass --> AnotherSubClassPrime (Inheritance)
         AnotherSubClass src = testDataFactory.getAnotherSubClass();
         runGeneric("testMapping4", src, AnotherSubClassPrime.class);
     }
 
-    @Test(timeout = 13000)
+    @Test
+    @Timeout(13000)
     public void testMapping5() {
         // SrcDeepObj --> DestDeepObj (Field Deep)
         SrcDeepObj src = testDataFactory.getSrcDeepObj();
@@ -197,7 +203,8 @@ public class PerformanceTest extends AbstractFunctionalTest {
     }
 
     // 1-2007: Test Case submitted by Dave B.
-    @Test(timeout = 35000)
+    @Test
+    @Timeout(35000)
     public void testMapping6() {
         // MyClassA --> MyClassB. Src object contains List with 500 String elements.
         MyClassA src = testDataFactory.getRandomMyClassA();
@@ -217,7 +224,7 @@ public class PerformanceTest extends AbstractFunctionalTest {
         }
         timer.stop();
         log.info("Total time for additional " + numIters + " mappings: " + timer.getTime() + " milliseconds");
-        log.info("avg time for " + numIters + " mappings: " + ((double)timer.getTime() / (double)numIters) + " milliseconds");
+        log.info("avg time for " + numIters + " mappings: " + ((double) timer.getTime() / (double) numIters) + " milliseconds");
     }
 
 }

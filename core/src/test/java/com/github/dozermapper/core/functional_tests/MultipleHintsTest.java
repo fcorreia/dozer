@@ -23,11 +23,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.jupiter.api.Assertions.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class MultipleHintsTest extends AbstractFunctionalTest {
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         super.setUp();
         mapper = getMapper("mappings/multipleHintsMapping.xml");

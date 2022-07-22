@@ -39,7 +39,7 @@ public class CollectionWithNullTest {
     private Foo foo;
     private Bar bar;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         mapperBuilder = DozerBeanMapperBuilder.create()
                 .withMappingFiles("mappings/collectionsWithNull.xml");

@@ -42,7 +42,7 @@ public class MapMappingTest extends AbstractFunctionalTest {
     private MapContainer source;
     private MapContainer target;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         source = new MapContainer();
         target = new MapContainer();

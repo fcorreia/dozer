@@ -33,7 +33,7 @@ public class CachingCustomConverterTest {
 
     Mapper mapper;
 
-    @Before
+    @BeforeEach
     public void setup() {
         mapper = DozerBeanMapperBuilder.create()
                 .withMappingFiles("mappings/mapper-aware.xml")

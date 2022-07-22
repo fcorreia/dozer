@@ -38,7 +38,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class MapMappingTest extends AbstractFunctionalTest {
 
     @Override
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         mapper = getMapper("mappings/mapMapping6.xml");
     }

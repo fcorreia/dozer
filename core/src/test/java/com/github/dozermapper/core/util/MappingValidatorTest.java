@@ -21,25 +21,29 @@ import com.github.dozermapper.core.config.BeanContainer;
 
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class MappingValidatorTest extends AbstractDozerTest {
 
     private BeanContainer beanContainer = new BeanContainer();
 
-    @Test(expected = MappingException.class)
+    @Test
     public void testValidateMappingRequest_NullSrcObj() {
-        MappingValidator.validateMappingRequest(null);
+        assertThrows(MappingException.class, () ->
+        MappingValidator.validateMappingRequest(null));
     }
 
-    @Test(expected = MappingException.class)
+    @Test
     public void testValidateMappingRequest_NullDestObj() {
-        MappingValidator.validateMappingRequest(new Object(), null);
+        assertThrows(MappingException.class, () ->
+        MappingValidator.validateMappingRequest(new Object(), null));
     }
 
-    @Test(expected = MappingException.class)
+    @Test
     public void testValidateMappingRequest_BothNullObj() {
-        MappingValidator.validateMappingRequest(null, null);
+        assertThrows(MappingException.class, () ->
+        MappingValidator.validateMappingRequest(null, null));
     }
 
     @Test
@@ -52,14 +56,16 @@ public class MappingValidatorTest extends AbstractDozerTest {
         }
     }
 
-    @Test(expected = MappingException.class)
+    @Test
     public void testValidtateMappingURL_InvalidFileName() {
-        MappingValidator.validateURL("hello", beanContainer);
+        assertThrows(MappingException.class, () ->
+        MappingValidator.validateURL("hello", beanContainer));
     }
 
-    @Test(expected = MappingException.class)
+    @Test
     public void testValidtateMappingURL_NullFileName() {
-        MappingValidator.validateURL(null, beanContainer);
+        assertThrows(MappingException.class, () ->
+        MappingValidator.validateURL(null, beanContainer));
     }
 
 }

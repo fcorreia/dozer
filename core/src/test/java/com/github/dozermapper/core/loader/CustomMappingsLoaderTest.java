@@ -45,7 +45,7 @@ public class CustomMappingsLoaderTest extends AbstractDozerTest {
     CustomMappingsLoader loader;
     ArrayList<MappingFileData> data;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         BeanContainer beanContainer = new BeanContainer();
         DestBeanCreator destBeanCreator = new DestBeanCreator(beanContainer);

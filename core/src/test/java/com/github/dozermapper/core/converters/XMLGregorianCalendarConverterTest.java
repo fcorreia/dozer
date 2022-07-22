@@ -37,7 +37,7 @@ public class XMLGregorianCalendarConverterTest extends AbstractDozerTest {
     private static final int MONTH = 8;
     private static final int DAY = 4;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         converter = new XMLGregorianCalendarConverter(new SimpleDateFormat("dd.MM.yyyy"));
     }

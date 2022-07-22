@@ -51,7 +51,7 @@ public class InvalidMapping_WithExceptionsLoggedTest extends AbstractFunctionalT
     /**
      * Messages of SAXExceptions are localized, so we have to set the language to English as expected by the tests.
      */
-    @Before
+    @BeforeEach
     public void setDefaultLocale() {
         Locale.setDefault(Locale.US);
     }

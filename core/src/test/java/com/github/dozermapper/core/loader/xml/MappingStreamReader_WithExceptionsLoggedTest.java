@@ -34,7 +34,7 @@ public class MappingStreamReader_WithExceptionsLoggedTest {
     private final Logger LOG = LoggerFactory.getLogger(MappingStreamReader_WithExceptionsLoggedTest.class);
     private MappingStreamReader streamReader;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         BeanContainer beanContainer = new BeanContainer();
         DestBeanCreator destBeanCreator = new DestBeanCreator(beanContainer);

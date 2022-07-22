@@ -26,7 +26,7 @@ public class IntegerConverterTest extends AbstractDozerTest {
 
     private IntegerConverter converter;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         converter = new IntegerConverter();
     }

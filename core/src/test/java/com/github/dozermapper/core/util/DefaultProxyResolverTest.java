@@ -30,7 +30,7 @@ public class DefaultProxyResolverTest {
 
     private DefaultProxyResolver resolver;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         resolver = new DefaultProxyResolver();
     }

@@ -52,12 +52,7 @@ import com.github.dozermapper.core.vo.interfacerecursion.UserSub;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class MappingUtilsTest extends AbstractDozerTest {
 
@@ -75,7 +70,7 @@ public class MappingUtilsTest extends AbstractDozerTest {
     @Test
     public void testOverridenFields() {
         MappingFileReader fileReader = new MappingFileReader(new XMLParserFactory(beanContainer), new XMLParser(beanContainer, destBeanCreator, propertyDescriptorFactory),
-                                                             beanContainer);
+                beanContainer);
         MappingFileData mappingFileData = fileReader.read("mappings/overridemapping.xml");
         MappingsParser mappingsParser = new MappingsParser(beanContainer, destBeanCreator, propertyDescriptorFactory);
         mappingsParser.processMappings(mappingFileData.getClassMaps(), mappingFileData.getConfiguration());
@@ -100,27 +95,30 @@ public class MappingUtilsTest extends AbstractDozerTest {
         assertEquals("invalid result value", "String", result);
     }
 
-    @Test(expected = MappingException.class)
+    @Test
     public void testThrowMappingException_MappingException() {
-        MappingException ex = new MappingException(String.valueOf(System.currentTimeMillis()));
-        MappingUtils.throwMappingException(ex);
-        fail("should have thrown exception");
+        assertThrows(MappingException.class, () -> {
+            MappingException ex = new MappingException(String.valueOf(System.currentTimeMillis()));
+            MappingUtils.throwMappingException(ex);
+        });
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void testThrowMappingException_RuntimeException() {
-        // Runtime ex should not get wrapped in MappingException
-        NullPointerException ex = new NullPointerException(String.valueOf(System.currentTimeMillis()));
-        MappingUtils.throwMappingException(ex);
-        fail("should have thrown exception");
+        assertThrows(NullPointerException.class, () -> {
+            // Runtime ex should not get wrapped in MappingException
+            NullPointerException ex = new NullPointerException(String.valueOf(System.currentTimeMillis()));
+            MappingUtils.throwMappingException(ex);
+        });
     }
 
-    @Test(expected = MappingException.class)
+    @Test
     public void testThrowMappingException_CheckedException() {
-        // Checked exception should get wrapped in MappingException
-        NoSuchFieldException ex = new NoSuchFieldException(String.valueOf(System.currentTimeMillis()));
-        MappingUtils.throwMappingException(ex);
-        fail("should have thrown exception");
+        assertThrows(MappingException.class, () -> {
+            // Checked exception should get wrapped in MappingException
+            NoSuchFieldException ex = new NoSuchFieldException(String.valueOf(System.currentTimeMillis()));
+            MappingUtils.throwMappingException(ex);
+        });
     }
 
     @Test
@@ -132,7 +130,7 @@ public class MappingUtilsTest extends AbstractDozerTest {
 
     @Test
     public void testGetRealClass_CGLIBTarget() {
-        Object proxyObj = ProxyDataObjectInstantiator.INSTANCE.newInstance(new Class[] {List.class}, new ArrayList());
+        Object proxyObj = ProxyDataObjectInstantiator.INSTANCE.newInstance(new Class[]{List.class}, new ArrayList());
         assertSame(proxyObj.getClass(), MappingUtils.getRealClass(proxyObj.getClass(), beanContainer));
     }
 
@@ -156,51 +154,52 @@ public class MappingUtilsTest extends AbstractDozerTest {
 
     @Test
     public void testPrepareIndexedCollection_Array() {
-        String[] result = (String[])MappingUtils.prepareIndexedCollection(String[].class, null, "some entry", 0);
-        assertTrue(Arrays.equals(new String[] {"some entry"}, result));
+        String[] result = (String[]) MappingUtils.prepareIndexedCollection(String[].class, null, "some entry", 0);
+        assertTrue(Arrays.equals(new String[]{"some entry"}, result));
 
-        result = (String[])MappingUtils.prepareIndexedCollection(String[].class, null, "some entry", 3);
-        assertTrue(Arrays.equals(new String[] {null, null, null, "some entry"}, result));
+        result = (String[]) MappingUtils.prepareIndexedCollection(String[].class, null, "some entry", 3);
+        assertTrue(Arrays.equals(new String[]{null, null, null, "some entry"}, result));
 
-        result = (String[])MappingUtils.prepareIndexedCollection(String[].class, new String[] {"a", "b", "c"}, "some entry", 5);
-        assertTrue(Arrays.equals(new String[] {"a", "b", "c", null, null, "some entry"}, result));
+        result = (String[]) MappingUtils.prepareIndexedCollection(String[].class, new String[]{"a", "b", "c"}, "some entry", 5);
+        assertTrue(Arrays.equals(new String[]{"a", "b", "c", null, null, "some entry"}, result));
     }
 
     @Test
     public void testPrepareIndexedCollection_List() {
-        List<?> result = (List<?>)MappingUtils.prepareIndexedCollection(List.class, null, "some entry", 0);
+        List<?> result = (List<?>) MappingUtils.prepareIndexedCollection(List.class, null, "some entry", 0);
         assertEquals(Arrays.asList("some entry"), result);
 
-        result = (List<?>)MappingUtils.prepareIndexedCollection(List.class, null, "some entry", 3);
+        result = (List<?>) MappingUtils.prepareIndexedCollection(List.class, null, "some entry", 3);
         assertEquals(Arrays.asList(null, null, null, "some entry"), result);
 
-        result = (List<?>)MappingUtils.prepareIndexedCollection(List.class, Arrays.asList("a", "b", "c"),
-                                                                "some entry", 5);
+        result = (List<?>) MappingUtils.prepareIndexedCollection(List.class, Arrays.asList("a", "b", "c"),
+                "some entry", 5);
         assertEquals(Arrays.asList("a", "b", "c", null, null, "some entry"), result);
     }
 
     @Test
     public void testPrepareIndexedCollection_Vector() {
-        Vector<?> result = (Vector<?>)MappingUtils.prepareIndexedCollection(Vector.class, null, "some entry", 0);
+        Vector<?> result = (Vector<?>) MappingUtils.prepareIndexedCollection(Vector.class, null, "some entry", 0);
         assertEquals(new Vector<>(Arrays.asList("some entry")), result);
 
-        result = (Vector<?>)MappingUtils.prepareIndexedCollection(Vector.class, null, "some entry", 3);
+        result = (Vector<?>) MappingUtils.prepareIndexedCollection(Vector.class, null, "some entry", 3);
         assertEquals(new Vector<>(Arrays.asList(null, null, null, "some entry")), result);
 
-        result = (Vector<?>)MappingUtils.prepareIndexedCollection(Vector.class, new Vector<>(Arrays.asList("a",
-                                                                                                           "b", "c")), "some entry", 5);
+        result = (Vector<?>) MappingUtils.prepareIndexedCollection(Vector.class, new Vector<>(Arrays.asList("a",
+                "b", "c")), "some entry", 5);
         assertEquals(new Vector<>(Arrays.asList("a", "b", "c", null, null, "some entry")), result);
     }
 
     @Test
     public void testPrepareIndexedCollection_ArrayResize() {
-        String[] result = (String[])MappingUtils.prepareIndexedCollection(String[].class, new String[] {"a", "b"}, "some entry", 3);
-        assertTrue(Arrays.equals(new String[] {"a", "b", null, "some entry"}, result));
+        String[] result = (String[]) MappingUtils.prepareIndexedCollection(String[].class, new String[]{"a", "b"}, "some entry", 3);
+        assertTrue(Arrays.equals(new String[]{"a", "b", null, "some entry"}, result));
     }
 
-    @Test(expected = MappingException.class)
+    @Test
     public void testPrepareIndexedCollection_UnsupportedType() {
-        MappingUtils.prepareIndexedCollection(String.class, null, "some entry", 0);
+        assertThrows(MappingException.class, () ->
+        MappingUtils.prepareIndexedCollection(String.class, null, "some entry", 0));
     }
 
     /**
@@ -251,7 +250,7 @@ public class MappingUtilsTest extends AbstractDozerTest {
         testGetSuperClasses(LevelOneImpl.class, BaseImpl.class, LevelOne.class, Serializable.class, Base.class, User.class);
         testGetSuperClasses(LevelTwoImpl.class, LevelTwo.class, LevelOne.class, User.class, Base.class);
         testGetSuperClasses(AnotherLevelTwoImpl.class, LevelOneImpl.class, BaseImpl.class, AnotherLevelTwo.class, LevelOne.class, UserSub.class, Base.class, User.class,
-                            Serializable.class);
+                Serializable.class);
     }
 
     public void testGetSuperClasses(Class<?> classToTest, Class<?>... expectedClasses) {

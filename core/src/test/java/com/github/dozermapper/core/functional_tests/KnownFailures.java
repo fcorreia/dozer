@@ -46,7 +46,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class KnownFailures extends AbstractFunctionalTest {
 
     @Override
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
 
     }

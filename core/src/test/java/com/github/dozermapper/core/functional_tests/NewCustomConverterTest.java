@@ -34,7 +34,7 @@ public class NewCustomConverterTest extends AbstractFunctionalTest {
 
     private Mapper mapper;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         super.setUp();
         mapper = getMapper("mappings/newCustomConverter.xml");

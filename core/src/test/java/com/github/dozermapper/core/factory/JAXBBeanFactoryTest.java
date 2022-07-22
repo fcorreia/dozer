@@ -22,15 +22,14 @@ import com.github.dozermapper.core.config.BeanContainer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class JAXBBeanFactoryTest extends AbstractDozerTest {
 
     private JAXBBeanFactory factory;
     private BeanContainer beanContainer;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         factory = new JAXBBeanFactory();
         beanContainer = new BeanContainer();
@@ -39,13 +38,14 @@ public class JAXBBeanFactoryTest extends AbstractDozerTest {
     @Test
     public void testCreateBeanForSimpleJaxbClass() {
         Object obj = factory.createBean(null, null, "com.github.dozermapper.core.vo.jaxb.employee.EmployeeType", beanContainer);
-        assertNotNull("Object can not be null", obj);
+        assertNotNull(obj, "Object can not be null");
         assertEquals("com.github.dozermapper.core.vo.jaxb.employee.EmployeeType", obj.getClass().getName());
     }
 
-    @Test(expected = MappingException.class)
+    @Test
     public void testCreateBeanClassNotFoundException() {
-        factory.createBean(null, null, "ve.ve.DE", beanContainer);
+        assertThrows(MappingException.class, () ->
+                factory.createBean(null, null, "ve.ve.DE", beanContainer));
     }
 
     @Test

@@ -36,7 +36,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class SecondUsingMapInternalTest {
     Mapper mapper;
 
-    @Before
+    @BeforeEach
     public void setup() {
         mapper = DozerBeanMapperBuilder.create()
                 .withMappingFiles("mappings/mapper-aware.xml")

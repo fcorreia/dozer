@@ -29,7 +29,7 @@ public class DozerResolverTest extends AbstractDozerTest {
 
     private DozerResolver dozerResolver;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         dozerResolver = new DozerResolver(new BeanContainer());
     }

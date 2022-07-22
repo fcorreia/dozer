@@ -30,7 +30,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class TrimStringsTest extends AbstractFunctionalTest {
 
     @Override
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         mapper = getMapper("mappings/trimStringsMapping.xml");
     }

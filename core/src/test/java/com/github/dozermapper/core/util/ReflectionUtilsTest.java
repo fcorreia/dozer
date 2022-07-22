@@ -39,38 +39,39 @@ import org.junit.jupiter.api.Test;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsNull.notNullValue;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ReflectionUtilsTest extends AbstractDozerTest {
 
     private BeanContainer beanContainer = new BeanContainer();
 
-    @Test(expected = MappingException.class)
+    @Test
     public void testGetMethod_NotFound() {
-        SimpleObj src = new SimpleObj();
-        ReflectionUtils.getMethod(src, String.valueOf(System.currentTimeMillis()));
+        assertThrows(MappingException.class, () -> {
+            SimpleObj src = new SimpleObj();
+            ReflectionUtils.getMethod(src, String.valueOf(System.currentTimeMillis()));
+        });
     }
 
-    @Test(expected = MappingException.class)
+    @Test
     public void testGetDeepFieldHierarchy_NonDeepField() {
-        ReflectionUtils.getDeepFieldHierarchy(SimpleObj.class, "test", null);
+        assertThrows(MappingException.class, () ->
+                ReflectionUtils.getDeepFieldHierarchy(SimpleObj.class, "test", null));
     }
 
-    @Test(expected = MappingException.class)
+    @Test
     public void testGetDeepFieldHierarchy_NotExists() {
-        ReflectionUtils.getDeepFieldHierarchy(SimpleObj.class,
-                                              String.valueOf(System.currentTimeMillis()) + "." + String.valueOf(System.currentTimeMillis()), null);
+        assertThrows(MappingException.class, () ->
+                ReflectionUtils.getDeepFieldHierarchy(SimpleObj.class,
+                        String.valueOf(System.currentTimeMillis()) + "." + String.valueOf(System.currentTimeMillis()), null));
     }
 
     @Test
     public void testGetPropertyDescriptors_InterfaceInheritance() {
         // Should walk the inheritance hierarchy all the way up to the super interface and find all properties along the way
         PropertyDescriptor[] pds = ReflectionUtils.getPropertyDescriptors(ChildChildIF.class);
-        assertNotNull("prop descriptors should not be null", pds);
-        assertEquals("3 prop descriptors should have been found", 3, pds.length);
+        assertNotNull(pds, "prop descriptors should not be null");
+        assertEquals(3, pds.length, "3 prop descriptors should have been found");
     }
 
     @Test
@@ -80,8 +81,8 @@ public class ReflectionUtilsTest extends AbstractDozerTest {
 
         PropertyDescriptor pd = ReflectionUtils.findPropertyDescriptor(ChildChildIF.class, fieldName, null);
 
-        assertNotNull("prop descriptor should not be null", pd);
-        assertEquals("invalid prop descriptor name found", fieldName, pd.getName());
+        assertNotNull(pd, "prop descriptor should not be null");
+        assertEquals(fieldName, pd.getName(), "invalid prop descriptor name found");
     }
 
     @Test
@@ -110,7 +111,7 @@ public class ReflectionUtilsTest extends AbstractDozerTest {
         String methodName = "setB";
         try {
             Method method = a.getClass().getMethod(methodName, B.class);
-            ReflectionUtils.invoke(method, a, new Object[] {"wrong param"});
+            ReflectionUtils.invoke(method, a, new Object[]{"wrong param"});
         } catch (NoSuchMethodException e) {
             Assert.fail("Method " + methodName + "missed");
         } catch (MappingException e) {
@@ -150,9 +151,10 @@ public class ReflectionUtilsTest extends AbstractDozerTest {
         assertNotNull(field);
     }
 
-    @Test(expected = MappingException.class)
+    @Test
     public void shouldFailWhenFieldMissing() {
-        ReflectionUtils.getFieldFromBean(GrandChild.class, "d");
+        assertThrows(MappingException.class, () ->
+                ReflectionUtils.getFieldFromBean(GrandChild.class, "d"));
     }
 
     @Test
@@ -167,16 +169,18 @@ public class ReflectionUtilsTest extends AbstractDozerTest {
         assertThat(result, notNullValue());
     }
 
-    @Test(expected = NoSuchMethodException.class)
+    @Test
     public void shouldThrowNoSuchMethodFound_Missing() throws Exception {
-        ReflectionUtils.findAMethod(TestClass.class, "noSuchMethod()", beanContainer);
-        fail();
+        assertThrows(NoSuchMethodException.class, () ->
+                ReflectionUtils.findAMethod(TestClass.class, "noSuchMethod()", beanContainer));
+
     }
 
-    @Test(expected = NoSuchMethodException.class)
+    @Test
     public void shouldThrowNoSuchMethodFound_MissingNoBrackets() throws Exception {
-        ReflectionUtils.findAMethod(TestClass.class, "noSuchMethod", beanContainer);
-        fail();
+        assertThrows(NoSuchMethodException.class, () -> {
+            ReflectionUtils.findAMethod(TestClass.class, "noSuchMethod", beanContainer);
+        });
     }
 
     @Test

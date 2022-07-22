@@ -36,7 +36,7 @@ public class CustomConverterContainerTest extends AbstractDozerTest {
     private DefaultCache cache;
     private List<CustomConverterDescription> converters;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         ccc = new CustomConverterContainer();
         cache = new DefaultCache("NAME", 10);

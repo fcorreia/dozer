@@ -44,7 +44,7 @@ public class XMLParserTest extends AbstractDozerTest {
     DestBeanCreator destBeanCreator;
     PropertyDescriptorFactory propertyDescriptorFactory;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         loader = new ResourceLoader(getClass().getClassLoader());
         beanContainer = new BeanContainer();

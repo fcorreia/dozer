@@ -37,7 +37,7 @@ public class ClassMapBuilderTest extends AbstractDozerTest {
     private BeanMappingGenerator beanMappingGenerator;
     private Configuration configuration;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         BeanContainer beanContainer = new BeanContainer();
         DestBeanCreator destBeanCreator = new DestBeanCreator(beanContainer);

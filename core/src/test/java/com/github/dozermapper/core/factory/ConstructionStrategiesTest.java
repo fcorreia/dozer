@@ -53,7 +53,7 @@ public class ConstructionStrategiesTest extends AbstractDozerTest {
     private JAXBBeanFactory jaxbBeanFactory;
     private BeanContainer beanContainer;
 
-    @Before
+    @BeforeEach
     @Override
     public void setUp() throws Exception {
         super.setUp();

@@ -29,7 +29,7 @@ public class CopyByReferenceContainerTest extends AbstractDozerTest {
 
     private CopyByReferenceContainer container;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         container = new CopyByReferenceContainer();
     }

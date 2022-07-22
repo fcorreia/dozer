@@ -31,7 +31,7 @@ public class RecursiveSelfMappingTest extends AbstractFunctionalTest {
 
     private ContainerBean c1;
 
-    @Before
+    @BeforeEach
     @Override
     public void setUp() {
         SelfReferencingBean b1 = newInstance(SelfReferencingBean.class);

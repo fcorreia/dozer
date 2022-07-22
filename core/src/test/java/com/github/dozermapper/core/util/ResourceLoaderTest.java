@@ -25,8 +25,7 @@ import com.github.dozermapper.core.MappingException;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ResourceLoaderTest extends AbstractDozerTest {
 
@@ -34,13 +33,13 @@ public class ResourceLoaderTest extends AbstractDozerTest {
 
     @Test
     public void testResourceNotFound() {
-        assertNull("file URL should not have been found", loader.getResource(String.valueOf(System.currentTimeMillis())));
+        assertNull(loader.getResource(String.valueOf(System.currentTimeMillis())), "file URL should not have been found");
     }
 
     @Test
     public void testGetResourceWithWhitespace() {
         URL url = loader.getResource("mappings/contextMapping.xml ");
-        assertNotNull("URL should not be null", url);
+        assertNotNull(url, "URL should not be null");
     }
 
     @Test
@@ -53,28 +52,30 @@ public class ResourceLoaderTest extends AbstractDozerTest {
 
         String resourceName = "file:" + temp.getAbsolutePath();
         URL url = loader.getResource(resourceName);
-        assertNotNull("URL should not be null", url);
+        assertNotNull(url, "URL should not be null");
 
         InputStream is = url.openStream();
-        assertNotNull("input stream should not be null", is);
+        assertNotNull(is, "input stream should not be null");
     }
 
-    @Test(expected = MappingException.class)
+    @Test
     public void testGetResouce_MalformedUrl() {
-        loader.getResource("foo:bar");
+        assertThrows(MappingException.class, () -> loader.getResource("foo:bar"));
     }
 
-    @Test(expected = IOException.class)
+    @Test
     public void testGetResource_FileOutsideOfClasspath_NotFound() throws Exception {
-        URL url = loader.getResource("file:" + System.currentTimeMillis());
-        assertNotNull("URL should not be null", url);
-        url.openStream();
+        assertThrows(IOException.class, () -> {
+            URL url = loader.getResource("file:" + System.currentTimeMillis());
+            assertNotNull(url, "URL should not be null");
+            url.openStream();
+        });
     }
 
     @Test
     public void testGetResource_FileOutsideOfClasspath_InvalidFormat() {
         // when using a file outside of classpath the file name must be prepended with "file:"
         URL url = loader.getResource(String.valueOf(System.currentTimeMillis()));
-        assertNull("URL should be null", url);
+        assertNull(url, "URL should be null");
     }
 }

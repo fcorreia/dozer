@@ -28,7 +28,7 @@ public class StringConstructorConverterTest extends AbstractDozerTest {
 
     private StringConstructorConverter converter;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         converter = new StringConstructorConverter(null);
     }

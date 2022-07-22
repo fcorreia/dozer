@@ -37,7 +37,7 @@ public class OffsetDateTimeMappingTest extends AbstractFunctionalTest {
 
     private Mapper mapper;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         mapper = getMapper("mappings/jsr330Mapping.xml");
     }

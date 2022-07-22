@@ -39,7 +39,7 @@ public class NullMappingTest extends AbstractFunctionalTest {
     private static final String NULL = "null";
     private static final String NOT_NULL = "not-null";
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         super.setUp();
         mapper = getMapper("mappings/nullMapping.xml");

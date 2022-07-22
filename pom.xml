@@ -104,7 +104,7 @@
         <nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
         <versions-maven-plugin.version>2.11.0</versions-maven-plugin.version>
 
-        <building-tools.version>6.5.2</building-tools.version>
+        <building-tools.version>7.0.0-SNAPSHOT</building-tools.version>
         <karaf4-version>4.2.6</karaf4-version>
     </properties>
 

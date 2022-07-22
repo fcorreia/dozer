@@ -70,7 +70,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class MapperTest extends AbstractFunctionalTest {
 
     @Override
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         mapper = getMapper("mappings/testDozerBeanMapping.xml");
     }

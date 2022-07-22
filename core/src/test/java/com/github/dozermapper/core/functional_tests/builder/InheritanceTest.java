@@ -29,7 +29,7 @@ public class InheritanceTest {
     private Mapper mapper;
     private A source;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         mapper = DozerBeanMapperBuilder.buildDefault();
 

@@ -30,7 +30,7 @@ public class JAXBBeansMapping_WithExceptionLoggedTest extends AbstractFunctional
 
     private final Logger LOG = LoggerFactory.getLogger(JAXBBeansMapping_WithExceptionLoggedTest.class);
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         super.setUp();
         mapper = getMapper("mappings/jaxbBeansMapping.xml");

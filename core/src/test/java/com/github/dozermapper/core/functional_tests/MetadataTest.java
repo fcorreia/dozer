@@ -43,7 +43,7 @@ public class MetadataTest extends AbstractFunctionalTest {
 
     private MappingMetadata mapMetadata;
 
-    @Before
+    @BeforeEach
     public void setup() {
         Mapper beanMapper = getMapper(MAPPING_FILE);
         mapMetadata = beanMapper.getMappingMetadata();

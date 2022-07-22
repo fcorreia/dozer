@@ -42,7 +42,7 @@ public class CollectionUtilsTest extends AbstractDozerTest {
 
     @Test
     public void testIsList() {
-        Object[] values = new Object[] {new ArrayList(), new Vector(), new LinkedList()};
+        Object[] values = new Object[]{new ArrayList(), new Vector(), new LinkedList()};
         for (int i = 0; i < values.length; i++) {
             assertTrue(CollectionUtils.isList(values[i].getClass()));
         }
@@ -50,7 +50,7 @@ public class CollectionUtilsTest extends AbstractDozerTest {
 
     @Test
     public void testIsSet() {
-        Object[] values = new Object[] {new TreeSet(), new HashSet(), new HashSet()};
+        Object[] values = new Object[]{new TreeSet(), new HashSet(), new HashSet()};
         for (int i = 0; i < values.length; i++) {
             assertTrue(CollectionUtils.isSet(values[i].getClass()));
         }
@@ -58,7 +58,7 @@ public class CollectionUtilsTest extends AbstractDozerTest {
 
     @Test
     public void testIsArray() {
-        Object[] values = new Object[] {new int[3], new InsideTestObject[2], new String[3]};
+        Object[] values = new Object[]{new int[3], new InsideTestObject[2], new String[3]};
         for (int i = 0; i < values.length; i++) {
             assertTrue(CollectionUtils.isArray(values[i].getClass()));
         }
@@ -66,7 +66,7 @@ public class CollectionUtilsTest extends AbstractDozerTest {
 
     @Test
     public void testIsPrimitiveArray() {
-        Object[] values = new Object[] {new int[3], new long[2], new boolean[3]};
+        Object[] values = new Object[]{new int[3], new long[2], new boolean[3]};
         for (int i = 0; i < values.length; i++) {
             assertTrue(CollectionUtils.isPrimitiveArray(values[i].getClass()));
         }
@@ -74,7 +74,7 @@ public class CollectionUtilsTest extends AbstractDozerTest {
 
     @Test
     public void testIsPrimitiveArray_False() {
-        Object[] values = new Object[] {new String[3], new Date[2], new SimpleObj[3]};
+        Object[] values = new Object[]{new String[3], new Date[2], new SimpleObj[3]};
         for (int i = 0; i < values.length; i++) {
             assertFalse(CollectionUtils.isPrimitiveArray(values[i].getClass()));
         }
@@ -83,29 +83,29 @@ public class CollectionUtilsTest extends AbstractDozerTest {
     @Test
     public void testGetValueFromCollection() {
         String sysTime = String.valueOf(System.currentTimeMillis());
-        String[] input = new String[] {"zer", "one", "two", "three", "four", sysTime, "six", "seven"};
+        String[] input = new String[]{"zer", "one", "two", "three", "four", sysTime, "six", "seven"};
         Object result = CollectionUtils.getValueFromCollection(input, 5);
 
-        assertEquals("invalid result", sysTime, result);
+        assertEquals(sysTime, result, "invalid result");
     }
 
     @Test
     public void testLengthOfCollection() {
-        String[] input = new String[] {"zer", "one", "two", "three", "four"};
-        assertEquals("invalid array size", input.length, CollectionUtils.getLengthOfCollection(input));
+        String[] input = new String[]{"zer", "one", "two", "three", "four"};
+        assertEquals(input.length, CollectionUtils.getLengthOfCollection(input), "invalid array size");
     }
 
     @Test
     public void testCreateNewSet_Default() {
         Set<?> result = CollectionUtils.createNewSet(Set.class);
-        assertNotNull("new set should not be null", result);
+        assertNotNull(result, "new set should not be null");
     }
 
     @Test
     public void testCreateNewSet_SortedSetDefault() {
         Set<?> result = CollectionUtils.createNewSet(SortedSet.class);
-        assertNotNull("new set should not be null", result);
-        assertTrue("new set should be instance of SortedSet", result instanceof SortedSet);
+        assertNotNull(result, "new set should not be null");
+        assertTrue(result instanceof SortedSet, "new set should be instance of SortedSet");
     }
 
     @Test
@@ -114,28 +114,28 @@ public class CollectionUtilsTest extends AbstractDozerTest {
         src.add("test1");
         src.add("test2");
         Set<?> result = CollectionUtils.createNewSet(Set.class, src);
-        assertNotNull("new set should not be null", result);
-        assertEquals("new set should equal src set", src, result);
+        assertNotNull(result, "new set should not be null");
+        assertEquals(src, result, "new set should equal src set");
     }
 
     @Test
     public void testConvertPrimitiveArrayToList() {
-        int[] srcArray = new int[] {5, 10, 15};
+        int[] srcArray = new int[]{5, 10, 15};
         List<?> result = CollectionUtils.convertPrimitiveArrayToList(srcArray);
-        assertEquals("invalid result size", srcArray.length, result.size());
+        assertEquals(srcArray.length, result.size(), "invalid result size");
 
         for (int i = 0; i < srcArray.length; i++) {
-            Integer srcValue = new Integer(srcArray[i]);
-            Integer resultValue = (Integer)result.get(i);
-            assertEquals("invalid result entry value", srcValue, resultValue);
+            Integer srcValue = Integer.valueOf(srcArray[i]);
+            Integer resultValue = (Integer) result.get(i);
+            assertEquals(srcValue, resultValue, "invalid result entry value");
         }
     }
 
     @Test
     public void testConvertListToArray() {
         List<String> src = Arrays.asList("a", "b");
-        String[] result = (String[])CollectionUtils.convertListToArray(src, String.class);
-        assertTrue("wrong result value", Arrays.equals(new String[] {"a", "b"}, result));
+        String[] result = (String[]) CollectionUtils.convertListToArray(src, String.class);
+        assertTrue(Arrays.equals(new String[]{"a", "b"}, result), "wrong result value");
     }
 
     @Test
@@ -144,14 +144,14 @@ public class CollectionUtilsTest extends AbstractDozerTest {
         src.add("a");
         src.add("b");
         Set<?> result = CollectionUtils.createNewSet(TreeSet.class, src);
-        assertEquals("wrong result value", src, result);
+        assertEquals(src, result, "wrong result value");
     }
 
     @Test
     public void testCreateNewSet() {
         Set<?> result = CollectionUtils.createNewSet(HashSet.class);
-        assertNotNull("should be not null", result);
-        assertEquals("shoulb be size zero", 0, result.size());
+        assertNotNull(result, "should be not null");
+        assertEquals(0, result.size(), "shoulb be size zero");
     }
 
 }

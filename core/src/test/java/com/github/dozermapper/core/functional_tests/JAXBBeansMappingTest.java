@@ -37,7 +37,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class JAXBBeansMappingTest extends AbstractFunctionalTest {
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         super.setUp();
         mapper = getMapper("mappings/jaxbBeansMapping.xml");

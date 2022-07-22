@@ -37,7 +37,7 @@ public class ZonedDateTimeMappingTest extends AbstractFunctionalTest {
     private Mapper mapper;
     private ZonedDateTime sample = ZonedDateTime.of(LocalDateTime.of(2017, 11, 2, 10, 0), ZoneId.systemDefault());
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         mapper = getMapper("mappings/jsr330Mapping.xml");
     }

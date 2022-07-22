@@ -18,7 +18,7 @@ package com.github.dozermapper.core.functional_tests;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.jupiter.api.Assertions.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
  * Tests to confirm that Dozer can map between primitive and wrapper types. E.g.

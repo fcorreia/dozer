@@ -34,7 +34,7 @@ public class ClassMappingsTest extends AbstractDozerTest {
 
     private ClassMappings classMappings;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         classMappings = new ClassMappings(new BeanContainer());
     }

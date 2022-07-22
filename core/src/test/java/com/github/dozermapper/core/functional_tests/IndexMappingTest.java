@@ -46,7 +46,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class IndexMappingTest extends AbstractFunctionalTest {
 
     @Override
-    @Before
+    @BeforeEach
     public void setUp() {
         mapper = getMapper("mappings/IndividualMapping.xml");
     }

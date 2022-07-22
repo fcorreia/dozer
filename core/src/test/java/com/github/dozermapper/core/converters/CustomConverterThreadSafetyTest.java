@@ -35,7 +35,7 @@ public class CustomConverterThreadSafetyTest extends AbstractDozerTest {
 
     private Mapper mapper;
 
-    @Before
+    @BeforeEach
     public void semtUp() {
         BeanMappingBuilder builder = new BeanMappingBuilder() {
             protected void configure() {

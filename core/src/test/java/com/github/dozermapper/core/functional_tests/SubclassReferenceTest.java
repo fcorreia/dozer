@@ -32,7 +32,7 @@ public class SubclassReferenceTest extends AbstractFunctionalTest {
     private TestA testA;
     private TestB testB;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         mapper = DozerBeanMapperBuilder.create()
                 .withMappingFiles(getMappingFile())

@@ -41,7 +41,7 @@ public class MappingsParserTest extends AbstractDozerTest {
     private PropertyDescriptorFactory propertyDescriptorFactory;
 
     @Override
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         beanContainer = new BeanContainer();
         destBeanCreator = new DestBeanCreator(beanContainer);

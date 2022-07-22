@@ -29,7 +29,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 public class MapBackedDeepMappingTest extends AbstractFunctionalTest {
 
     @Override
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         mapper = getMapper("mappings/mapBackedDeepMapping.xml");
     }
